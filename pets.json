@@ -1,0 +1,190 @@
+{
+  "Huge Admin Chest Mimic": {
+    "type": "Huge",
+    "exists": 1556,
+    "mutations": {
+      "Normal": 12
+    },
+    "variants": {
+      "Normal": 10,
+      "Golden": 1,
+      "Rainbow": 1
+    },
+    "doubleMutations": [],
+    "doubleVariants": [],
+    "processedCombos": [
+      "Normal__Normal__1538",
+      "Normal__Golden__109",
+      "Normal__Normal__1540",
+      "Normal__Rainbow__82",
+      "Normal__Normal__1542",
+      "Normal__Normal__1543",
+      "Normal__Normal__1546",
+      "Normal__Normal__1547",
+      "Normal__Normal__1550",
+      "Normal__Normal__1552",
+      "Normal__Normal__1554",
+      "Normal__Normal__1556"
+    ]
+  },
+  "Huge Axolotl": {
+    "type": "Huge",
+    "exists": 260,
+    "mutations": {
+      "Normal": 11,
+      "Starstruck": 1
+    },
+    "variants": {
+      "Normal": 11,
+      "Rainbow": 1
+    },
+    "doubleMutations": [],
+    "doubleVariants": [],
+    "processedCombos": [
+      "Normal__Normal__244",
+      "Normal__Normal__246",
+      "Normal__Normal__247",
+      "Normal__Normal__248",
+      "Normal__Normal__251",
+      "Starstruck__Rainbow__1",
+      "Normal__Normal__252",
+      "Normal__Normal__254",
+      "Normal__Normal__255",
+      "Normal__Normal__256",
+      "Normal__Normal__258",
+      "Normal__Normal__260"
+    ]
+  },
+  "Huge Evil Imp": {
+    "type": "Huge",
+    "exists": 125,
+    "mutations": {
+      "Normal": 8
+    },
+    "variants": {
+      "Normal": 8
+    },
+    "doubleMutations": [],
+    "doubleVariants": [],
+    "processedCombos": [
+      "Normal__Normal__111",
+      "Normal__Normal__113",
+      "Normal__Normal__115",
+      "Normal__Normal__117",
+      "Normal__Normal__119",
+      "Normal__Normal__121",
+      "Normal__Normal__123",
+      "Normal__Normal__125"
+    ]
+  },
+  "Huge Dual Cat": {
+    "type": "Huge",
+    "exists": 427,
+    "mutations": {
+      "Normal": 11
+    },
+    "variants": {
+      "Normal": 11
+    },
+    "doubleMutations": [],
+    "doubleVariants": [],
+    "processedCombos": [
+      "Normal__Normal__408",
+      "Normal__Normal__409",
+      "Normal__Normal__412",
+      "Normal__Normal__413",
+      "Normal__Normal__414",
+      "Normal__Normal__415",
+      "Normal__Normal__419",
+      "Normal__Normal__420",
+      "Normal__Normal__421",
+      "Normal__Normal__425",
+      "Normal__Normal__427"
+    ]
+  },
+  "Huge Cloudy Ducky": {
+    "type": "Huge",
+    "exists": 134,
+    "mutations": {
+      "Normal": 5
+    },
+    "variants": {
+      "Normal": 5
+    },
+    "doubleMutations": [],
+    "doubleVariants": [],
+    "processedCombos": [
+      "Normal__Normal__126",
+      "Normal__Normal__128",
+      "Normal__Normal__129",
+      "Normal__Normal__132",
+      "Normal__Normal__134"
+    ]
+  },
+  "Huge Cyclops": {
+    "type": "Huge",
+    "exists": 73,
+    "mutations": {
+      "Normal": 1
+    },
+    "variants": {
+      "Normal": 1
+    },
+    "doubleMutations": [],
+    "doubleVariants": [],
+    "processedCombos": [
+      "Normal__Normal__73"
+    ]
+  },
+  "Huge Mr. Cat": {
+    "type": "Huge",
+    "exists": 539,
+    "mutations": {
+      "Normal": 6
+    },
+    "variants": {
+      "Normal": 6
+    },
+    "doubleMutations": [],
+    "doubleVariants": [],
+    "processedCombos": [
+      "Normal__Normal__532",
+      "Normal__Normal__533",
+      "Normal__Normal__534",
+      "Normal__Normal__535",
+      "Normal__Normal__538",
+      "Normal__Normal__539"
+    ]
+  },
+  "Huge Frog": {
+    "type": "Huge",
+    "exists": 57,
+    "mutations": {
+      "Normal": 1
+    },
+    "variants": {
+      "Normal": 1
+    },
+    "doubleMutations": [],
+    "doubleVariants": [],
+    "processedCombos": [
+      "Normal__Normal__57"
+    ]
+  },
+  "Huge Mr. Bunny": {
+    "type": "Huge",
+    "exists": 163,
+    "mutations": {
+      "Normal": 2
+    },
+    "variants": {
+      "Normal": 2
+    },
+    "doubleMutations": [],
+    "doubleVariants": [],
+    "processedCombos": [
+      "Normal__Normal__162",
+      "Normal__Normal__163"
+    ]
+  }
+}
