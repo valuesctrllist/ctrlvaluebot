@@ -1,15 +1,15 @@
 const http = require("http");
+const { Client, GatewayIntentBits } = require("discord.js");
 
 http.createServer((req, res) => {
   res.writeHead(200);
   res.end("Bot is running");
 }).listen(process.env.PORT || 3000);
-const { Client, GatewayIntentBits } = require('discord.js');
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const HATCH_CHANNEL_ID = process.env.HATCH_CHANNEL_ID;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_REPO = process.env.GITHUB_REPO; // format: owner/repo
+const GITHUB_REPO = process.env.GITHUB_REPO; // owner/repo
 
 const STARTUP_CATCHUP_ENABLED = true;
 const STARTUP_CATCHUP_LIMIT = 1000;
@@ -43,6 +43,17 @@ let processedMessagesData = [];
 let petsSha = null;
 let processedSha = null;
 
+console.log("Starting bot...");
+console.log("Has DISCORD_TOKEN:", !!DISCORD_TOKEN);
+console.log("Has HATCH_CHANNEL_ID:", !!HATCH_CHANNEL_ID);
+console.log("Has GITHUB_TOKEN:", !!GITHUB_TOKEN);
+console.log("GITHUB_REPO:", GITHUB_REPO);
+
+if (!DISCORD_TOKEN) throw new Error("Missing DISCORD_TOKEN");
+if (!HATCH_CHANNEL_ID) throw new Error("Missing HATCH_CHANNEL_ID");
+if (!GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN");
+if (!GITHUB_REPO) throw new Error("Missing GITHUB_REPO");
+
 function splitRepo(repo) {
   const [owner, name] = repo.split("/");
   return { owner, name };
@@ -67,21 +78,22 @@ async function githubRequest(url, options = {}) {
   return res.json();
 }
 
-async function loadFileFromGitHub(path) {
+async function loadFileFromGitHub(filePath) {
   const { owner, name } = splitRepo(GITHUB_REPO);
-  const url = `https://api.github.com/repos/${owner}/${name}/contents/${path}`;
+  const url = `https://api.github.com/repos/${owner}/${name}/contents/${filePath}`;
   const data = await githubRequest(url);
 
   const decoded = Buffer.from(data.content, "base64").toString("utf8");
+
   return {
     content: decoded,
     sha: data.sha
   };
 }
 
-async function saveFileToGitHub(path, content, sha, message) {
+async function saveFileToGitHub(filePath, content, sha, message) {
   const { owner, name } = splitRepo(GITHUB_REPO);
-  const url = `https://api.github.com/repos/${owner}/${name}/contents/${path}`;
+  const url = `https://api.github.com/repos/${owner}/${name}/contents/${filePath}`;
 
   const body = {
     message,
@@ -98,6 +110,8 @@ async function saveFileToGitHub(path, content, sha, message) {
 }
 
 async function loadRemoteData() {
+  console.log("Loading data from GitHub...");
+
   const petsFile = await loadFileFromGitHub(PETS_FILE_PATH);
   petsData = JSON.parse(petsFile.content || "{}");
   petsSha = petsFile.sha;
@@ -128,6 +142,8 @@ async function saveRemoteData(reason = "Update hatch tracker data") {
     processedSha,
     `${reason} - processed messages`
   );
+
+  console.log("Saved data back to GitHub");
 }
 
 function ensurePet(data, name, type) {
@@ -144,6 +160,14 @@ function ensurePet(data, name, type) {
       processedCombos: []
     };
   }
+
+  if (typeof data[name].normal !== "number") data[name].normal = 0;
+  if (!data[name].mutations) data[name].mutations = {};
+  if (!data[name].variants) data[name].variants = {};
+  if (!data[name].combos) data[name].combos = {};
+  if (!data[name].doubleMutations) data[name].doubleMutations = {};
+  if (!data[name].doubleVariants) data[name].doubleVariants = {};
+  if (!data[name].processedCombos) data[name].processedCombos = [];
 }
 
 function increment(obj, key) {
@@ -185,6 +209,7 @@ function buildMessageText(message) {
 
   if (message.embeds?.length) {
     const e = message.embeds[0];
+
     text += "\n" + (e.title || "");
     text += "\n" + (e.description || "");
 
@@ -205,10 +230,15 @@ function markMessageProcessed(messageId) {
   processedMessagesData.push(messageId);
 
   if (processedMessagesData.length > 5000) {
-    const removed = processedMessagesData.splice(0, processedMessagesData.length - 5000);
+    const removed = processedMessagesData.splice(
+      0,
+      processedMessagesData.length - 5000
+    );
+
     for (const id of removed) {
       processedMessageIds.delete(id);
     }
+
     for (const id of processedMessagesData) {
       processedMessageIds.add(id);
     }
@@ -216,16 +246,28 @@ function markMessageProcessed(messageId) {
 }
 
 function processHatchMessage(message, data, source = "LIVE") {
-  if (processedMessageIds.has(message.id)) return false;
+  if (processedMessageIds.has(message.id)) {
+    console.log(`[${source}] ALREADY COUNTED MESSAGE ID`);
+    return false;
+  }
 
   const text = buildMessageText(message);
   const lower = text.toLowerCase();
 
-  if (lower.includes("secret")) return false;
-  if (!lower.includes("huge") && !lower.includes("giant")) return false;
+  if (lower.includes("secret")) {
+    console.log(`[${source}] IGNORED SECRET`);
+    return false;
+  }
+
+  if (!lower.includes("huge") && !lower.includes("giant")) {
+    return false;
+  }
 
   const match = text.match(/just (got|hatched) a (.+?)!/i);
-  if (!match) return false;
+  if (!match) {
+    console.log(`[${source}] NO HATCH MATCH`);
+    return false;
+  }
 
   const drop = match[2].trim();
 
@@ -255,10 +297,25 @@ function processHatchMessage(message, data, source = "LIVE") {
     if (VARIANTS.includes(w)) foundVariants.push(w);
   }
 
-  if (foundMutations.length >= 3) return false;
-  if (foundVariants.length >= 3) return false;
-  if (foundMutations.length >= 2 && foundVariants.length >= 1) return false;
-  if (foundVariants.length >= 2 && foundMutations.length >= 1) return false;
+  if (foundMutations.length >= 3) {
+    console.log(`[${source}] IGNORED TRIPLE+ MUTATION`);
+    return false;
+  }
+
+  if (foundVariants.length >= 3) {
+    console.log(`[${source}] IGNORED TRIPLE+ VARIANT`);
+    return false;
+  }
+
+  if (foundMutations.length >= 2 && foundVariants.length >= 1) {
+    console.log(`[${source}] IGNORED DOUBLE MUTATION + VARIANT`);
+    return false;
+  }
+
+  if (foundVariants.length >= 2 && foundMutations.length >= 1) {
+    console.log(`[${source}] IGNORED DOUBLE VARIANT + MUTATION`);
+    return false;
+  }
 
   ensurePet(data, pet, petType);
 
@@ -269,6 +326,7 @@ function processHatchMessage(message, data, source = "LIVE") {
   const comboKey = normalizeCombo(foundMutations, foundVariants, serial);
   if (data[pet].processedCombos.includes(comboKey)) {
     markMessageProcessed(message.id);
+    console.log(`[${source}] DUPLICATE PET/SERIAL COMBO`);
     return false;
   }
 
@@ -294,12 +352,14 @@ function processHatchMessage(message, data, source = "LIVE") {
 
   markMessageProcessed(message.id);
 
-  console.log(`[${source}] SAVED → ${pet} (#${serial ?? "?"})`);
+  console.log(`[${source}] SAVED -> ${pet} (#${serial ?? "?"})`);
   return true;
 }
 
 async function runStartupCatchup(client) {
   if (!STARTUP_CATCHUP_ENABLED) return;
+
+  console.log(`Running startup catch-up for last ${STARTUP_CATCHUP_LIMIT} messages...`);
 
   const channel = await client.channels.fetch(HATCH_CHANNEL_ID);
   let before;
@@ -314,7 +374,9 @@ async function runStartupCatchup(client) {
 
     if (!messages.size) break;
 
-    const sorted = [...messages.values()].sort((a, b) => a.createdTimestamp - b.createdTimestamp);
+    const sorted = [...messages.values()].sort(
+      (a, b) => a.createdTimestamp - b.createdTimestamp
+    );
 
     for (const m of sorted) {
       if (processHatchMessage(m, petsData, "CATCHUP")) {
@@ -343,6 +405,7 @@ const client = new Client({
 
 client.once("ready", async () => {
   console.log(`Bot online as ${client.user.tag}`);
+
   await loadRemoteData();
   await runStartupCatchup(client);
 });
@@ -361,5 +424,9 @@ client.on("messageCreate", async (message) => {
   }
 });
 
-client.login(DISCORD_TOKEN);
+client.on("error", console.error);
+process.on("unhandledRejection", console.error);
+process.on("uncaughtException", console.error);
 
+console.log("Attempting Discord login...");
+client.login(DISCORD_TOKEN);
