@@ -4381,8 +4381,8 @@
   },
   "Huge Cyclops": {
     "type": "Huge",
-    "exists": 75,
-    "normal": 66,
+    "exists": 77,
+    "normal": 67,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -4454,7 +4454,8 @@
       "None_None_5",
       "None_None_3",
       "None_None_1",
-      "None_None_2"
+      "None_None_2",
+      "None_None_77"
     ]
   },
   "Huge Spirit Cat": {
