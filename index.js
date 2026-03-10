@@ -395,24 +395,6 @@ async function runStartupCatchup(client) {
   console.log("Startup catch-up finished");
 }
 
-async function testDiscordToken() {
-  console.log("Testing Discord token with REST API...");
-
-  const res = await fetch("https://discord.com/api/v10/users/@me", {
-    headers: {
-      Authorization: `Bot ${DISCORD_TOKEN}`
-    }
-  });
-
-  const text = await res.text();
-  console.log("Discord REST status:", res.status);
-  console.log("Discord REST body:", text);
-
-  if (!res.ok) {
-    throw new Error(`Discord REST token test failed: ${res.status} ${text}`);
-  }
-}
-
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -461,22 +443,13 @@ process.on("uncaughtException", (err) => {
   console.error("UNCAUGHT EXCEPTION:", err);
 });
 
-(async () => {
-  try {
-    await testDiscordToken();
+console.log("Attempting Discord login...");
 
-    console.log("Attempting Discord login...");
-
-    client.login(DISCORD_TOKEN)
-      .then(() => {
-        console.log("Discord login promise resolved");
-      })
-      .catch((err) => {
-        console.error("DISCORD LOGIN FAILED:");
-        console.error(err);
-      });
-  } catch (err) {
-    console.error("STARTUP FAILED:");
+client.login(DISCORD_TOKEN)
+  .then(() => {
+    console.log("Discord login promise resolved");
+  })
+  .catch((err) => {
+    console.error("DISCORD LOGIN FAILED:");
     console.error(err);
-  }
-})();
+  });
