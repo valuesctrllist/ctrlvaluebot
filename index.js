@@ -147,14 +147,9 @@ async function loadRemoteData() {
 
   console.log("Loaded local pets.json and processedMessages.json");
 
-  try {
-    petsSha = await fetchFileSha(PETS_FILE_PATH);
-    processedSha = await fetchFileSha(PROCESSED_FILE_PATH);
-    console.log("Fetched GitHub SHAs for future saves");
-  } catch (err) {
-    console.error("Failed fetching GitHub SHAs:");
-    console.error(err);
-  }
+  // IMPORTANT: do not fetch GitHub SHAs here
+  petsSha = null;
+  processedSha = null;
 }
 
 async function saveRemoteData(reason = "Update hatch tracker data") {
