@@ -1,8 +1,8 @@
 {
   "Huge Cloudy Ducky": {
     "type": "Huge",
-    "exists": 162,
-    "normal": 131,
+    "exists": 164,
+    "normal": 132,
     "mutations": {
       "Taco": 1,
       "Godlike": 1
@@ -152,7 +152,8 @@
       "None_None_156",
       "None_None_158",
       "None_None_160",
-      "None_None_162"
+      "None_None_162",
+      "None_None_164"
     ]
   },
   "Huge Dual Cat": {
