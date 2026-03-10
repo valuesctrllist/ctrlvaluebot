@@ -5565,8 +5565,8 @@
   },
   "Huge Cosmic Dominus": {
     "type": "Huge",
-    "exists": 485,
-    "normal": 475,
+    "exists": 486,
+    "normal": 476,
     "mutations": {
       "Taco": 27,
       "Godlike": 2,
@@ -6141,7 +6141,8 @@
       "None_None_5",
       "None_None_2",
       "None_None_3",
-      "None_None_1"
+      "None_None_1",
+      "None_None_486"
     ]
   },
   "Huge Mecha Dino": {
