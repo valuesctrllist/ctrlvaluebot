@@ -887,8 +887,8 @@
   },
   "Huge Admin Chest Mimic": {
     "type": "Huge",
-    "exists": 1564,
-    "normal": 1427,
+    "exists": 1566,
+    "normal": 1428,
     "mutations": {
       "Lovely": 1
     },
@@ -2648,7 +2648,8 @@
       "None_Rainbow_2",
       "None_None_4",
       "None_None_1",
-      "None_None_2"
+      "None_None_2",
+      "None_None_1566"
     ]
   },
   "Huge Axolotl": {
