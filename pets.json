@@ -4251,8 +4251,8 @@
   },
   "Huge Dual Dog": {
     "type": "Huge",
-    "exists": 127,
-    "normal": 124,
+    "exists": 129,
+    "normal": 125,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -4382,7 +4382,8 @@
       "None_None_20",
       "None_None_22",
       "None_None_1",
-      "None_None_2"
+      "None_None_2",
+      "None_None_129"
     ]
   },
   "Huge Cyclops": {
