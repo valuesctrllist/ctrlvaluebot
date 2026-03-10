@@ -4473,8 +4473,8 @@
   },
   "Huge Fractured Dominus": {
     "type": "Huge",
-    "exists": 29,
-    "normal": 22,
+    "exists": 31,
+    "normal": 23,
     "mutations": {},
     "variants": {
       "Rainbow": 1
@@ -4505,7 +4505,8 @@
       "None_Rainbow_1",
       "None_None_9",
       "None_None_8",
-      "None_None_7"
+      "None_None_7",
+      "None_None_31"
     ]
   },
   "Huge Royal Golem": {
