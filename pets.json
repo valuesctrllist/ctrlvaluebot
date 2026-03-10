@@ -823,20 +823,21 @@
   "Huge Admin Chest Mimic": {
     "type": "Huge",
     "exists": 1564,
-    "normal": 874,
+    "normal": 879,
     "mutations": {},
     "variants": {
       "Rainbow": 41,
-      "Shiny": 26,
-      "Golden": 36,
-      "Super Shiny": 37
+      "Shiny": 27,
+      "Golden": 68,
+      "Super Shiny": 41
     },
     "combos": {},
     "doubleMutations": {},
     "doubleVariants": {
       "Golden + Shiny": 8,
       "Golden + Super Shiny": 6,
-      "Rainbow + Super Shiny": 6
+      "Rainbow + Super Shiny": 6,
+      "Rainbow + Shiny": 6
     },
     "processedCombos": [
       "None_None_1562",
@@ -1872,7 +1873,55 @@
       "None_Super Shiny_46",
       "None_Super Shiny_45",
       "None_Super Shiny_47",
-      "None_Super Shiny_48"
+      "None_Super Shiny_48",
+      "None_None_598",
+      "None_None_599",
+      "None_Shiny_36",
+      "None_None_595",
+      "None_Rainbow|Shiny_7",
+      "None_Rainbow|Shiny_8",
+      "None_Rainbow|Shiny_9",
+      "None_Rainbow|Shiny_10",
+      "None_Rainbow|Shiny_11",
+      "None_Rainbow|Shiny_12",
+      "None_None_596",
+      "None_None_597",
+      "None_Super Shiny_11",
+      "None_Super Shiny_12",
+      "None_Super Shiny_13",
+      "None_Super Shiny_14",
+      "None_Golden_26",
+      "None_Golden_27",
+      "None_Golden_28",
+      "None_Golden_29",
+      "None_Golden_30",
+      "None_Golden_32",
+      "None_Golden_33",
+      "None_Golden_34",
+      "None_Golden_35",
+      "None_Golden_36",
+      "None_Golden_37",
+      "None_Golden_38",
+      "None_Golden_40",
+      "None_Golden_41",
+      "None_Golden_43",
+      "None_Golden_44",
+      "None_Golden_45",
+      "None_Golden_46",
+      "None_Golden_47",
+      "None_Golden_48",
+      "None_Golden_49",
+      "None_Golden_50",
+      "None_Golden_51",
+      "None_Golden_53",
+      "None_Golden_54",
+      "None_Golden_56",
+      "None_Golden_57",
+      "None_Golden_58",
+      "None_Golden_59",
+      "None_Golden_60",
+      "None_Golden_65",
+      "None_Golden_70"
     ]
   },
   "Huge Axolotl": {
@@ -2198,7 +2247,7 @@
   "Huge Royal Dogcat": {
     "type": "Huge",
     "exists": 168,
-    "normal": 57,
+    "normal": 58,
     "mutations": {
       "Starstruck": 1,
       "Frozen": 1
@@ -2272,7 +2321,8 @@
       "None_None_113",
       "None_None_111",
       "None_None_112",
-      "None_None_110"
+      "None_None_110",
+      "None_None_109"
     ]
   },
   "Huge Draconic Hydra": {
@@ -2493,7 +2543,7 @@
   "Huge Mr. Cat": {
     "type": "Huge",
     "exists": 542,
-    "normal": 346,
+    "normal": 347,
     "mutations": {
       "Godlike": 17,
       "Electrified": 1,
@@ -2894,7 +2944,8 @@
       "None_None_171",
       "None_None_172",
       "None_None_173",
-      "None_None_174"
+      "None_None_174",
+      "None_None_170"
     ]
   },
   "Huge Mr. Bunny": {
@@ -3701,7 +3752,7 @@
   "Huge Lucky Block Dog": {
     "type": "Huge",
     "exists": 166,
-    "normal": 64,
+    "normal": 66,
     "mutations": {},
     "variants": {
       "Rainbow": 3,
@@ -3784,7 +3835,9 @@
       "None_None_104",
       "None_None_101",
       "None_None_102",
-      "None_None_103"
+      "None_None_103",
+      "None_None_99",
+      "None_None_100"
     ]
   },
   "Huge Frost Queen Fairy": {
@@ -5263,7 +5316,7 @@
   "Huge 100k Chest Mimic": {
     "type": "Huge",
     "exists": 56,
-    "normal": 18,
+    "normal": 20,
     "mutations": {
       "Taco": 1,
       "Godlike": 1
@@ -5292,7 +5345,9 @@
       "Taco_None_2",
       "None_None_40",
       "None_None_39",
-      "Godlike_None_1"
+      "Godlike_None_1",
+      "None_None_37",
+      "None_None_38"
     ]
   },
   "Huge Pixel Dragon": {
@@ -6940,7 +6995,7 @@
   "Huge 100k Dog": {
     "type": "Huge",
     "exists": 873,
-    "normal": 247,
+    "normal": 296,
     "mutations": {
       "Starstruck": 1,
       "Taco": 4
@@ -7213,7 +7268,56 @@
       "None_None_617",
       "None_None_618",
       "None_None_619",
-      "None_None_620"
+      "None_None_620",
+      "None_None_621",
+      "None_None_622",
+      "None_None_623",
+      "None_None_624",
+      "None_None_625",
+      "None_None_626",
+      "None_None_628",
+      "None_None_629",
+      "None_None_630",
+      "None_None_631",
+      "None_None_599",
+      "None_None_600",
+      "None_None_601",
+      "None_None_602",
+      "None_None_603",
+      "None_None_604",
+      "None_None_605",
+      "None_None_606",
+      "None_None_607",
+      "None_None_608",
+      "None_None_609",
+      "None_None_610",
+      "None_None_611",
+      "None_None_612",
+      "None_None_613",
+      "None_None_614",
+      "None_None_615",
+      "None_None_577",
+      "None_None_578",
+      "None_None_579",
+      "None_None_580",
+      "None_None_581",
+      "None_None_582",
+      "None_None_583",
+      "None_None_584",
+      "None_None_585",
+      "None_None_586",
+      "None_None_587",
+      "None_None_588",
+      "None_None_589",
+      "None_None_590",
+      "None_None_591",
+      "None_None_592",
+      "None_None_593",
+      "None_None_594",
+      "None_None_595",
+      "None_None_596",
+      "None_None_597",
+      "None_None_598"
     ]
   },
   "Huge Shard Dino": {
@@ -7266,7 +7370,7 @@
   "Huge 100k Dogcat": {
     "type": "Huge",
     "exists": 92,
-    "normal": 28,
+    "normal": 37,
     "mutations": {
       "Frozen": 1
     },
@@ -7303,7 +7407,16 @@
       "None_None_68",
       "None_None_67",
       "None_None_66",
-      "None_None_65"
+      "None_None_65",
+      "None_None_64",
+      "None_None_58",
+      "None_None_59",
+      "None_None_60",
+      "None_None_61",
+      "None_None_62",
+      "None_None_63",
+      "None_None_56",
+      "None_None_57"
     ]
   },
   "Huge Heart Balloon Koala": {
