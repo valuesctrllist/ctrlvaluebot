@@ -661,7 +661,7 @@
   "Huge Blue Chest Mimic": {
     "type": "Huge",
     "exists": 57,
-    "normal": 55,
+    "normal": 57,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -722,7 +722,9 @@
       "None_None_6",
       "None_None_7",
       "None_None_3",
-      "None_None_4"
+      "None_None_4",
+      "None_None_1",
+      "None_None_2"
     ]
   },
   "Huge Evil Imp": {
@@ -870,7 +872,7 @@
   "Huge Admin Chest Mimic": {
     "type": "Huge",
     "exists": 1564,
-    "normal": 1425,
+    "normal": 1427,
     "mutations": {
       "Lovely": 1
     },
@@ -2628,7 +2630,9 @@
       "None_None_9",
       "None_None_10",
       "None_None_11",
-      "None_None_4"
+      "None_None_4",
+      "None_None_1",
+      "None_None_2"
     ]
   },
   "Huge Axolotl": {
@@ -4930,7 +4934,7 @@
   "Huge Royal Golem": {
     "type": "Huge",
     "exists": 38,
-    "normal": 35,
+    "normal": 36,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -4971,13 +4975,14 @@
       "None_None_9",
       "None_None_4",
       "None_None_5",
-      "None_None_3"
+      "None_None_3",
+      "None_None_2"
     ]
   },
   "Huge Royal Demon": {
     "type": "Huge",
     "exists": 23,
-    "normal": 21,
+    "normal": 22,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -5004,7 +5009,8 @@
       "None_None_5",
       "None_None_4",
       "None_None_3",
-      "None_None_2"
+      "None_None_2",
+      "None_None_1"
     ]
   },
   "Huge Lucky Block Dog": {
@@ -7396,7 +7402,7 @@
   "Huge Pixel Dragon": {
     "type": "Huge",
     "exists": 22,
-    "normal": 21,
+    "normal": 22,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -7423,7 +7429,8 @@
       "None_None_5",
       "None_None_4",
       "None_None_3",
-      "None_None_2"
+      "None_None_2",
+      "None_None_1"
     ]
   },
   "Huge Royal Dominus": {
@@ -8238,13 +8245,13 @@
   "Huge Gummy Dragon": {
     "type": "Huge",
     "exists": 63,
-    "normal": 56,
+    "normal": 59,
     "mutations": {
       "Godlike": 1,
       "Lovely": 2,
       "Frozen": 3,
       "Starstruck": 1,
-      "Taco": 1
+      "Taco": 3
     },
     "variants": {
       "Shiny": 2
@@ -8321,7 +8328,12 @@
       "None_None_8",
       "None_None_9",
       "None_None_10",
-      "Taco_None_3"
+      "Taco_None_3",
+      "None_None_4",
+      "None_None_5",
+      "None_None_6",
+      "Taco_None_1",
+      "Taco_None_2"
     ]
   },
   "Huge Dogcat": {
@@ -12981,7 +12993,7 @@
   "Huge Blob": {
     "type": "Huge",
     "exists": 26,
-    "normal": 25,
+    "normal": 26,
     "mutations": {},
     "variants": {
       "Shiny": 1
@@ -13015,13 +13027,14 @@
       "None_None_2",
       "None_None_3",
       "None_None_4",
-      "None_None_5"
+      "None_None_5",
+      "None_None_1"
     ]
   },
   "Huge OG Overseer": {
     "type": "Huge",
     "exists": 31,
-    "normal": 15,
+    "normal": 16,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -13042,13 +13055,14 @@
       "None_None_21",
       "None_None_18",
       "None_None_19",
-      "None_None_17"
+      "None_None_17",
+      "None_None_16"
     ]
   },
   "Huge OG Gem": {
     "type": "Huge",
     "exists": 16,
-    "normal": 6,
+    "normal": 7,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -13060,7 +13074,8 @@
       "None_None_14",
       "None_None_13",
       "None_None_11",
-      "None_None_12"
+      "None_None_12",
+      "None_None_10"
     ]
   },
   "Huge Gummy Hydra": {
@@ -13069,7 +13084,7 @@
     "normal": 26,
     "mutations": {
       "Lovely": 1,
-      "Taco": 2
+      "Taco": 4
     },
     "variants": {},
     "combos": {},
@@ -13104,13 +13119,15 @@
       "None_None_5",
       "None_None_4",
       "None_None_2",
-      "None_None_3"
+      "None_None_3",
+      "Taco_None_1",
+      "Taco_None_2"
     ]
   },
   "Huge Cupcake": {
     "type": "Huge",
     "exists": 141,
-    "normal": 136,
+    "normal": 140,
     "mutations": {
       "Taco": 6,
       "Frozen": 1,
@@ -13272,7 +13289,11 @@
       "None_None_12",
       "None_None_13",
       "None_None_14",
-      "None_None_15"
+      "None_None_15",
+      "None_None_1",
+      "None_None_2",
+      "None_None_3",
+      "None_None_4"
     ]
   }
 }
