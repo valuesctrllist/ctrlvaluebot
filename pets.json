@@ -827,10 +827,10 @@
   "Huge Admin Chest Mimic": {
     "type": "Huge",
     "exists": 1564,
-    "normal": 1006,
+    "normal": 1022,
     "mutations": {},
     "variants": {
-      "Rainbow": 56,
+      "Rainbow": 57,
       "Shiny": 45,
       "Golden": 73,
       "Super Shiny": 41
@@ -2091,7 +2091,24 @@
       "None_None_466",
       "None_None_467",
       "None_None_469",
-      "None_None_468"
+      "None_None_468",
+      "None_None_470",
+      "None_None_471",
+      "None_None_472",
+      "None_None_473",
+      "None_None_474",
+      "None_None_475",
+      "None_None_476",
+      "None_None_477",
+      "None_None_478",
+      "None_Rainbow_21",
+      "None_None_439",
+      "None_None_441",
+      "None_None_442",
+      "None_None_443",
+      "None_None_444",
+      "None_None_445",
+      "None_None_437"
     ]
   },
   "Huge Axolotl": {
@@ -2723,18 +2740,18 @@
   "Huge Mr. Cat": {
     "type": "Huge",
     "exists": 542,
-    "normal": 383,
+    "normal": 410,
     "mutations": {
-      "Godlike": 17,
+      "Godlike": 22,
       "Electrified": 2,
-      "Taco": 5,
+      "Taco": 6,
       "Eclipsed": 2,
       "Starstruck": 2
     },
     "variants": {
       "Super Shiny": 2,
       "Golden": 3,
-      "Shiny": 7,
+      "Shiny": 8,
       "Rainbow": 2
     },
     "combos": {
@@ -3168,15 +3185,49 @@
       "Taco_None_8",
       "None_None_139",
       "None_None_131",
-      "None_None_130"
+      "None_None_130",
+      "None_None_132",
+      "None_None_133",
+      "Taco_None_5",
+      "None_None_134",
+      "None_None_135",
+      "None_Shiny_3",
+      "None_None_116",
+      "None_None_117",
+      "None_None_119",
+      "None_None_120",
+      "None_None_121",
+      "Godlike_None_10",
+      "None_None_122",
+      "None_None_123",
+      "None_None_124",
+      "Godlike_None_11",
+      "None_None_125",
+      "None_None_126",
+      "Godlike_None_12",
+      "None_None_127",
+      "Godlike_None_13",
+      "Godlike_None_14",
+      "None_None_128",
+      "None_None_129",
+      "None_None_104",
+      "None_None_105",
+      "None_None_106",
+      "None_None_107",
+      "None_None_108",
+      "None_None_109",
+      "None_None_110",
+      "None_None_111",
+      "None_None_112",
+      "None_None_115"
     ]
   },
   "Huge Mr. Bunny": {
     "type": "Huge",
     "exists": 166,
-    "normal": 127,
+    "normal": 140,
     "mutations": {
-      "Taco": 5,
+      "Taco": 6,
       "Godlike": 5,
       "Eclipsed": 1,
       "Moonlit": 1
@@ -3331,7 +3382,21 @@
       "None_None_35",
       "None_None_36",
       "Taco_None_4",
-      "None_None_31"
+      "None_None_31",
+      "None_None_32",
+      "None_None_33",
+      "None_None_34",
+      "None_None_27",
+      "None_None_28",
+      "None_None_29",
+      "Taco_None_3",
+      "None_None_30",
+      "None_None_21",
+      "None_None_22",
+      "None_None_23",
+      "None_None_24",
+      "None_None_25",
+      "None_None_26"
     ]
   },
   "Huge Pixel Knight Demon": {
@@ -3969,7 +4034,7 @@
   "Huge Fractured Dominus": {
     "type": "Huge",
     "exists": 29,
-    "normal": 18,
+    "normal": 19,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -3993,7 +4058,8 @@
       "None_None_14",
       "None_None_13",
       "None_None_12",
-      "None_None_11"
+      "None_None_11",
+      "None_None_10"
     ]
   },
   "Huge Royal Golem": {
@@ -4038,7 +4104,7 @@
     "normal": 99,
     "mutations": {},
     "variants": {
-      "Rainbow": 4,
+      "Rainbow": 5,
       "Golden": 5,
       "Shiny": 2
     },
@@ -4155,7 +4221,8 @@
       "None_None_69",
       "None_None_68",
       "None_None_66",
-      "None_None_65"
+      "None_None_65",
+      "None_Rainbow_3"
     ]
   },
   "Huge Frost Queen Fairy": {
@@ -4331,7 +4398,7 @@
   "Huge Goat": {
     "type": "Huge",
     "exists": 32,
-    "normal": 20,
+    "normal": 21,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -4357,7 +4424,8 @@
       "None_None_15",
       "None_None_16",
       "None_None_14",
-      "None_None_13"
+      "None_None_13",
+      "None_None_12"
     ]
   },
   "Huge Cosmic Dominus": {
@@ -5667,7 +5735,7 @@
   "Huge 100k Chest Mimic": {
     "type": "Huge",
     "exists": 56,
-    "normal": 46,
+    "normal": 48,
     "mutations": {
       "Taco": 2,
       "Godlike": 1
@@ -5730,7 +5798,9 @@
       "None_None_13",
       "None_None_12",
       "Taco_None_1",
-      "None_None_11"
+      "None_None_11",
+      "None_None_9",
+      "None_None_10"
     ]
   },
   "Huge Pixel Dragon": {
@@ -6502,7 +6572,7 @@
   "Huge Heart Balloon Dragon": {
     "type": "Huge",
     "exists": 31,
-    "normal": 9,
+    "normal": 10,
     "mutations": {
       "Godlike": 1,
       "Taco": 2
@@ -6523,7 +6593,8 @@
       "Taco_None_2",
       "None_None_25",
       "None_None_23",
-      "None_None_24"
+      "None_None_24",
+      "None_None_22"
     ]
   },
   "Huge Gummy Dragon": {
@@ -7489,7 +7560,7 @@
   "Huge Corrupted Wyvern": {
     "type": "Huge",
     "exists": 17,
-    "normal": 14,
+    "normal": 15,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -7509,22 +7580,23 @@
       "None_None_7",
       "None_None_5",
       "None_None_4",
-      "None_None_3"
+      "None_None_3",
+      "None_None_1"
     ]
   },
   "Huge 100k Dog": {
     "type": "Huge",
     "exists": 873,
-    "normal": 678,
+    "normal": 717,
     "mutations": {
       "Starstruck": 1,
       "Taco": 11,
       "Rainy": 3,
-      "Frozen": 1
+      "Frozen": 2
     },
     "variants": {
       "Shiny": 6,
-      "Golden": 4,
+      "Golden": 5,
       "Super Shiny": 1
     },
     "combos": {
@@ -8238,7 +8310,48 @@
       "None_None_189",
       "None_Shiny_1",
       "None_None_190",
-      "Taco_None_3"
+      "Taco_None_3",
+      "None_None_191",
+      "Frozen_None_1",
+      "None_None_192",
+      "None_None_193",
+      "None_Golden_2",
+      "None_None_194",
+      "None_None_195",
+      "None_None_163",
+      "None_None_168",
+      "None_None_169",
+      "None_None_170",
+      "None_None_171",
+      "None_None_172",
+      "None_None_173",
+      "None_None_174",
+      "None_None_175",
+      "None_None_178",
+      "None_None_179",
+      "None_None_180",
+      "None_None_181",
+      "None_None_183",
+      "None_None_185",
+      "None_None_186",
+      "None_None_187",
+      "None_None_188",
+      "None_None_135",
+      "None_None_136",
+      "None_None_137",
+      "None_None_138",
+      "None_None_140",
+      "None_None_141",
+      "None_None_143",
+      "None_None_144",
+      "None_None_148",
+      "None_None_147",
+      "None_None_150",
+      "None_None_151",
+      "None_None_152",
+      "None_None_155",
+      "None_None_162",
+      "None_None_161"
     ]
   },
   "Huge Shard Dino": {
@@ -8258,7 +8371,7 @@
   "Huge Cosmic Cat": {
     "type": "Huge",
     "exists": 21,
-    "normal": 16,
+    "normal": 17,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -8280,7 +8393,8 @@
       "None_None_10",
       "None_None_8",
       "None_None_6",
-      "None_None_7"
+      "None_None_7",
+      "None_None_5"
     ]
   },
   "Huge Clockwork Dragon": {
@@ -8301,7 +8415,7 @@
   "Huge 100k Dogcat": {
     "type": "Huge",
     "exists": 92,
-    "normal": 78,
+    "normal": 81,
     "mutations": {
       "Frozen": 2
     },
@@ -8393,15 +8507,19 @@
       "Frozen_None_1",
       "None_None_16",
       "None_None_17",
-      "None_None_15"
+      "None_None_15",
+      "None_None_9",
+      "None_None_10",
+      "None_None_11"
     ]
   },
   "Huge Heart Balloon Koala": {
     "type": "Huge",
     "exists": 80,
-    "normal": 19,
+    "normal": 21,
     "mutations": {
-      "Taco": 11
+      "Taco": 11,
+      "Godlike": 1
     },
     "variants": {
       "Super Shiny": 1,
@@ -8442,13 +8560,16 @@
       "None_None_66",
       "None_None_64",
       "None_None_62",
-      "None_None_63"
+      "None_None_63",
+      "Godlike_None_10",
+      "None_None_60",
+      "None_None_61"
     ]
   },
   "Huge Lovely Wisp": {
     "type": "Huge",
     "exists": 320,
-    "normal": 11,
+    "normal": 13,
     "mutations": {
       "Godlike": 1,
       "Taco": 2
@@ -8474,7 +8595,9 @@
       "None_Rainbow_2",
       "None_None_312",
       "None_None_311",
-      "None_None_310"
+      "None_None_310",
+      "None_None_309",
+      "None_None_308"
     ]
   },
   "Huge Crowned Cube Cat": {
