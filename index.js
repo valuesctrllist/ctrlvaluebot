@@ -80,14 +80,25 @@ async function githubRequest(url, options = {}) {
 
 async function loadFileFromGitHub(filePath) {
   const { owner, name } = splitRepo(GITHUB_REPO);
-  const url = `https://api.github.com/repos/${owner}/${name}/contents/${filePath}`;
-  const data = await githubRequest(url);
 
-  const decoded = Buffer.from(data.content, "base64").toString("utf8");
+  // Read from raw public URL first
+  const rawUrl = `https://raw.githubusercontent.com/${owner}/${name}/main/${filePath}`;
+  const rawRes = await fetch(rawUrl);
+
+  if (!rawRes.ok) {
+    const text = await rawRes.text();
+    throw new Error(`Raw GitHub read failed ${rawRes.status}: ${text}`);
+  }
+
+  const content = await rawRes.text();
+
+  // Then fetch metadata/sha for future writes
+  const apiUrl = `https://api.github.com/repos/${owner}/${name}/contents/${filePath}`;
+  const meta = await githubRequest(apiUrl);
 
   return {
-    content: decoded,
-    sha: data.sha
+    content,
+    sha: meta.sha
   };
 }
 
@@ -112,38 +123,57 @@ async function saveFileToGitHub(filePath, content, sha, message) {
 async function loadRemoteData() {
   console.log("Loading data from GitHub...");
 
-  const petsFile = await loadFileFromGitHub(PETS_FILE_PATH);
-  petsData = JSON.parse(petsFile.content || "{}");
-  petsSha = petsFile.sha;
+  try {
+    const petsFile = await loadFileFromGitHub(PETS_FILE_PATH);
+    petsData = JSON.parse(petsFile.content || "{}");
+    petsSha = petsFile.sha;
+    console.log("Loaded pets.json");
+  } catch (err) {
+    console.error("Failed loading pets.json:");
+    console.error(err);
+    petsData = {};
+  }
 
-  const processedFile = await loadFileFromGitHub(PROCESSED_FILE_PATH);
-  processedMessagesData = JSON.parse(processedFile.content || "[]");
-  processedSha = processedFile.sha;
+  try {
+    const processedFile = await loadFileFromGitHub(PROCESSED_FILE_PATH);
+    processedMessagesData = JSON.parse(processedFile.content || "[]");
+    processedSha = processedFile.sha;
+    console.log("Loaded processedMessages.json");
+  } catch (err) {
+    console.error("Failed loading processedMessages.json:");
+    console.error(err);
+    processedMessagesData = [];
+  }
 
   processedMessageIds.clear();
   for (const id of processedMessagesData) {
     processedMessageIds.add(id);
   }
 
-  console.log("Loaded pets.json and processedMessages.json from GitHub");
+  console.log("Finished loading remote data");
 }
 
 async function saveRemoteData(reason = "Update hatch tracker data") {
-  petsSha = await saveFileToGitHub(
-    PETS_FILE_PATH,
-    JSON.stringify(petsData, null, 2),
-    petsSha,
-    `${reason} - pets`
-  );
+  try {
+    petsSha = await saveFileToGitHub(
+      PETS_FILE_PATH,
+      JSON.stringify(petsData, null, 2),
+      petsSha,
+      `${reason} - pets`
+    );
 
-  processedSha = await saveFileToGitHub(
-    PROCESSED_FILE_PATH,
-    JSON.stringify(processedMessagesData, null, 2),
-    processedSha,
-    `${reason} - processed messages`
-  );
+    processedSha = await saveFileToGitHub(
+      PROCESSED_FILE_PATH,
+      JSON.stringify(processedMessagesData, null, 2),
+      processedSha,
+      `${reason} - processed messages`
+    );
 
-  console.log("Saved data back to GitHub");
+    console.log("Saved data back to GitHub");
+  } catch (err) {
+    console.error("FAILED SAVING TO GITHUB:");
+    console.error(err);
+  }
 }
 
 function ensurePet(data, name, type) {
@@ -209,7 +239,6 @@ function buildMessageText(message) {
 
   if (message.embeds?.length) {
     const e = message.embeds[0];
-
     text += "\n" + (e.title || "");
     text += "\n" + (e.description || "");
 
