@@ -1,4 +1,6 @@
 const http = require("http");
+const fs = require("fs");
+const path = require("path");
 const { Client, GatewayIntentBits } = require("discord.js");
 
 http.createServer((req, res) => {
@@ -11,10 +13,13 @@ const HATCH_CHANNEL_ID = process.env.HATCH_CHANNEL_ID;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_REPO = process.env.GITHUB_REPO; // owner/repo
 
+const LOCAL_PETS_FILE = path.join(__dirname, "pets.json");
+const LOCAL_PROCESSED_FILE = path.join(__dirname, "processedMessages.json");
+
 const STARTUP_CATCHUP_ENABLED = true;
 const STARTUP_CATCHUP_LIMIT = 1000;
 
-// turn this on only when you want a one-time large rebuild
+// one-time huge rebuild
 const FULL_BACKFILL_MODE = true;
 const FULL_BACKFILL_LIMIT = 50000;
 const BACKFILL_SAVE_EVERY = 250;
@@ -83,26 +88,11 @@ async function githubRequest(url, options = {}) {
   return res.json();
 }
 
-async function loadFileFromGitHub(filePath) {
+async function fetchFileSha(filePath) {
   const { owner, name } = splitRepo(GITHUB_REPO);
-
-  const rawUrl = `https://raw.githubusercontent.com/${owner}/${name}/main/${filePath}`;
-  const rawRes = await fetch(rawUrl);
-
-  if (!rawRes.ok) {
-    const text = await rawRes.text();
-    throw new Error(`Raw GitHub read failed ${rawRes.status}: ${text}`);
-  }
-
-  const content = await rawRes.text();
-
-  const apiUrl = `https://api.github.com/repos/${owner}/${name}/contents/${filePath}`;
-  const meta = await githubRequest(apiUrl);
-
-  return {
-    content,
-    sha: meta.sha
-  };
+  const url = `https://api.github.com/repos/${owner}/${name}/contents/${filePath}`;
+  const data = await githubRequest(url);
+  return data.sha;
 }
 
 async function saveFileToGitHub(filePath, content, sha, message) {
@@ -123,41 +113,58 @@ async function saveFileToGitHub(filePath, content, sha, message) {
   return result.content.sha;
 }
 
+function safeReadJson(localPath, fallback) {
+  try {
+    if (!fs.existsSync(localPath)) return fallback;
+    const raw = fs.readFileSync(localPath, "utf8");
+    return JSON.parse(raw || JSON.stringify(fallback));
+  } catch (err) {
+    console.error(`Failed reading local file ${localPath}:`);
+    console.error(err);
+    return fallback;
+  }
+}
+
+function writeLocalJson(localPath, data) {
+  try {
+    fs.writeFileSync(localPath, JSON.stringify(data, null, 2));
+  } catch (err) {
+    console.error(`Failed writing local file ${localPath}:`);
+    console.error(err);
+  }
+}
+
 async function loadRemoteData() {
-  console.log("Loading data from GitHub...");
+  console.log("Loading data from local cloned files...");
 
-  try {
-    const petsFile = await loadFileFromGitHub(PETS_FILE_PATH);
-    petsData = JSON.parse(petsFile.content || "{}");
-    petsSha = petsFile.sha;
-    console.log("Loaded pets.json");
-  } catch (err) {
-    console.error("Failed loading pets.json:");
-    console.error(err);
-    petsData = {};
-  }
-
-  try {
-    const processedFile = await loadFileFromGitHub(PROCESSED_FILE_PATH);
-    processedMessagesData = JSON.parse(processedFile.content || "[]");
-    processedSha = processedFile.sha;
-    console.log("Loaded processedMessages.json");
-  } catch (err) {
-    console.error("Failed loading processedMessages.json:");
-    console.error(err);
-    processedMessagesData = [];
-  }
+  petsData = safeReadJson(LOCAL_PETS_FILE, {});
+  processedMessagesData = safeReadJson(LOCAL_PROCESSED_FILE, []);
 
   processedMessageIds.clear();
   for (const id of processedMessagesData) {
     processedMessageIds.add(id);
   }
 
-  console.log("Finished loading remote data");
+  console.log("Loaded local pets.json and processedMessages.json");
+
+  try {
+    petsSha = await fetchFileSha(PETS_FILE_PATH);
+    processedSha = await fetchFileSha(PROCESSED_FILE_PATH);
+    console.log("Fetched GitHub SHAs for future saves");
+  } catch (err) {
+    console.error("Failed fetching GitHub SHAs:");
+    console.error(err);
+  }
 }
 
 async function saveRemoteData(reason = "Update hatch tracker data") {
   try {
+    writeLocalJson(LOCAL_PETS_FILE, petsData);
+    writeLocalJson(LOCAL_PROCESSED_FILE, processedMessagesData);
+
+    if (!petsSha) petsSha = await fetchFileSha(PETS_FILE_PATH);
+    if (!processedSha) processedSha = await fetchFileSha(PROCESSED_FILE_PATH);
+
     petsSha = await saveFileToGitHub(
       PETS_FILE_PATH,
       JSON.stringify(petsData, null, 2),
@@ -278,9 +285,7 @@ function markMessageProcessed(messageId) {
 }
 
 function processHatchMessage(message, data, source = "LIVE") {
-  if (processedMessageIds.has(message.id)) {
-    return false;
-  }
+  if (processedMessageIds.has(message.id)) return false;
 
   const text = buildMessageText(message);
   const lower = text.toLowerCase();
@@ -295,9 +300,7 @@ function processHatchMessage(message, data, source = "LIVE") {
   }
 
   const match = text.match(/just (got|hatched) a (.+?)!/i);
-  if (!match) {
-    return false;
-  }
+  if (!match) return false;
 
   const drop = match[2].trim();
 
@@ -417,11 +420,10 @@ async function runStartupCatchup(client) {
   if (!STARTUP_CATCHUP_ENABLED) return;
 
   console.log(`Running startup catch-up for last ${STARTUP_CATCHUP_LIMIT} messages...`);
-
   const result = await scanMessages(client, STARTUP_CATCHUP_LIMIT, "CATCHUP");
 
   if (result.changed) {
-    console.log("Saving rebuilt data to GitHub...");
+    console.log("Saving startup catch-up data to GitHub...");
     await saveRemoteData("Startup catch-up rebuild");
   }
 
@@ -432,7 +434,6 @@ async function runFullBackfill(client) {
   if (!FULL_BACKFILL_MODE) return;
 
   console.log(`Running FULL BACKFILL for up to ${FULL_BACKFILL_LIMIT} messages...`);
-
   const result = await scanMessages(
     client,
     FULL_BACKFILL_LIMIT,
