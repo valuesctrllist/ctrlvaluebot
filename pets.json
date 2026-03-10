@@ -817,11 +817,11 @@
   "Huge Admin Chest Mimic": {
     "type": "Huge",
     "exists": 1564,
-    "normal": 760,
+    "normal": 764,
     "mutations": {},
     "variants": {
       "Rainbow": 34,
-      "Shiny": 19,
+      "Shiny": 25,
       "Golden": 36,
       "Super Shiny": 11
     },
@@ -1705,16 +1705,26 @@
       "None_None_717",
       "None_None_718",
       "None_None_719",
-      "None_None_715"
+      "None_None_715",
+      "None_None_716",
+      "None_Shiny_38",
+      "None_Shiny_39",
+      "None_Shiny_40",
+      "None_Shiny_42",
+      "None_Shiny_43",
+      "None_Shiny_44",
+      "None_None_712",
+      "None_None_713",
+      "None_None_714"
     ]
   },
   "Huge Axolotl": {
     "type": "Huge",
     "exists": 267,
-    "normal": 208,
+    "normal": 221,
     "mutations": {
       "Taco": 2,
-      "Godlike": 6,
+      "Godlike": 9,
       "Frozen": 1,
       "Moonlit": 1
     },
@@ -1960,7 +1970,23 @@
       "None_None_32",
       "None_None_33",
       "None_None_26",
-      "None_None_25"
+      "None_None_25",
+      "None_None_24",
+      "None_None_12",
+      "None_None_13",
+      "None_None_14",
+      "None_None_15",
+      "None_None_16",
+      "None_None_17",
+      "None_None_18",
+      "Godlike_None_4",
+      "None_None_19",
+      "None_None_20",
+      "Godlike_None_5",
+      "None_None_21",
+      "Godlike_None_6",
+      "None_None_22",
+      "None_None_23"
     ]
   },
   "Huge Bear": {
@@ -2678,7 +2704,7 @@
   "Huge Pixel Knight Demon": {
     "type": "Huge",
     "exists": 28,
-    "normal": 17,
+    "normal": 21,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -2701,7 +2727,11 @@
       "None_None_14",
       "None_None_13",
       "None_None_12",
-      "None_None_11"
+      "None_None_11",
+      "None_None_7",
+      "None_None_8",
+      "None_None_9",
+      "None_None_10"
     ]
   },
   "Huge Gift Cat": {
@@ -3587,7 +3617,7 @@
   "Huge Bob": {
     "type": "Huge",
     "exists": 1010,
-    "normal": 809,
+    "normal": 881,
     "mutations": {
       "Godlike": 2,
       "Taco": 19,
@@ -3597,10 +3627,11 @@
     "variants": {
       "Golden": 3,
       "Rainbow": 3,
-      "Shiny": 5
+      "Shiny": 6
     },
     "combos": {
-      "Taco + Golden": 1
+      "Taco + Golden": 1,
+      "Godlike + Rainbow": 1
     },
     "doubleMutations": {},
     "doubleVariants": {},
@@ -4448,13 +4479,87 @@
       "Starstruck_None_1",
       "None_None_165",
       "None_None_166",
-      "None_None_167"
+      "None_None_167",
+      "None_None_168",
+      "None_None_169",
+      "None_None_170",
+      "None_None_171",
+      "None_None_172",
+      "None_None_173",
+      "None_None_174",
+      "None_None_175",
+      "None_None_176",
+      "None_None_177",
+      "None_None_178",
+      "None_None_179",
+      "None_None_180",
+      "None_None_181",
+      "None_None_182",
+      "None_None_183",
+      "None_None_129",
+      "None_None_130",
+      "None_None_131",
+      "None_None_132",
+      "None_None_133",
+      "None_None_134",
+      "None_None_135",
+      "None_None_136",
+      "None_None_138",
+      "None_None_139",
+      "None_None_140",
+      "None_None_141",
+      "None_None_142",
+      "None_None_143",
+      "None_None_144",
+      "None_None_145",
+      "None_None_146",
+      "None_None_147",
+      "None_None_148",
+      "None_None_149",
+      "None_None_150",
+      "None_None_151",
+      "None_None_152",
+      "None_None_153",
+      "None_None_154",
+      "None_None_155",
+      "None_None_156",
+      "None_None_157",
+      "None_None_158",
+      "None_None_101",
+      "None_None_102",
+      "None_None_103",
+      "None_None_104",
+      "None_None_105",
+      "None_None_106",
+      "None_None_107",
+      "None_None_109",
+      "None_None_110",
+      "None_None_111",
+      "None_None_112",
+      "None_None_113",
+      "None_None_114",
+      "None_None_115",
+      "None_None_116",
+      "None_None_117",
+      "None_None_118",
+      "None_None_119",
+      "None_None_120",
+      "None_None_121",
+      "None_Shiny_2",
+      "None_None_122",
+      "None_None_123",
+      "None_None_124",
+      "None_None_125",
+      "None_None_126",
+      "None_None_127",
+      "None_None_128",
+      "Godlike_Rainbow_1"
     ]
   },
   "Huge Bob Stack": {
     "type": "Huge",
     "exists": 105,
-    "normal": 78,
+    "normal": 90,
     "mutations": {
       "Taco": 1
     },
@@ -4546,7 +4651,19 @@
       "None_None_25",
       "None_None_26",
       "None_None_27",
-      "None_None_28"
+      "None_None_28",
+      "None_None_29",
+      "None_None_30",
+      "None_None_19",
+      "None_None_20",
+      "None_None_21",
+      "None_None_22",
+      "None_None_23",
+      "None_None_24",
+      "None_None_15",
+      "None_None_16",
+      "None_None_17",
+      "None_None_18"
     ]
   },
   "Huge 100k Chest Mimic": {
