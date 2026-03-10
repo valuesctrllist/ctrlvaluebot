@@ -730,8 +730,8 @@
   },
   "Huge Evil Imp": {
     "type": "Huge",
-    "exists": 156,
-    "normal": 117,
+    "exists": 158,
+    "normal": 118,
     "mutations": {
       "Taco": 3,
       "Godlike": 1
@@ -868,7 +868,8 @@
       "None_None_5",
       "None_None_1",
       "None_None_154",
-      "None_None_156"
+      "None_None_156",
+      "None_None_158"
     ]
   },
   "Huge Admin Chest Mimic": {
