@@ -14,6 +14,11 @@ const GITHUB_REPO = process.env.GITHUB_REPO; // owner/repo
 const STARTUP_CATCHUP_ENABLED = true;
 const STARTUP_CATCHUP_LIMIT = 1000;
 
+// turn this on only when you want a one-time large rebuild
+const FULL_BACKFILL_MODE = true;
+const FULL_BACKFILL_LIMIT = 50000;
+const BACKFILL_SAVE_EVERY = 250;
+
 const PETS_FILE_PATH = "pets.json";
 const PROCESSED_FILE_PATH = "processedMessages.json";
 
@@ -81,7 +86,6 @@ async function githubRequest(url, options = {}) {
 async function loadFileFromGitHub(filePath) {
   const { owner, name } = splitRepo(GITHUB_REPO);
 
-  // Read from raw public URL first
   const rawUrl = `https://raw.githubusercontent.com/${owner}/${name}/main/${filePath}`;
   const rawRes = await fetch(rawUrl);
 
@@ -92,7 +96,6 @@ async function loadFileFromGitHub(filePath) {
 
   const content = await rawRes.text();
 
-  // Then fetch metadata/sha for future writes
   const apiUrl = `https://api.github.com/repos/${owner}/${name}/contents/${filePath}`;
   const meta = await githubRequest(apiUrl);
 
@@ -276,7 +279,6 @@ function markMessageProcessed(messageId) {
 
 function processHatchMessage(message, data, source = "LIVE") {
   if (processedMessageIds.has(message.id)) {
-    console.log(`[${source}] ALREADY COUNTED MESSAGE ID`);
     return false;
   }
 
@@ -294,7 +296,6 @@ function processHatchMessage(message, data, source = "LIVE") {
 
   const match = text.match(/just (got|hatched) a (.+?)!/i);
   if (!match) {
-    console.log(`[${source}] NO HATCH MATCH`);
     return false;
   }
 
@@ -326,25 +327,10 @@ function processHatchMessage(message, data, source = "LIVE") {
     if (VARIANTS.includes(w)) foundVariants.push(w);
   }
 
-  if (foundMutations.length >= 3) {
-    console.log(`[${source}] IGNORED TRIPLE+ MUTATION`);
-    return false;
-  }
-
-  if (foundVariants.length >= 3) {
-    console.log(`[${source}] IGNORED TRIPLE+ VARIANT`);
-    return false;
-  }
-
-  if (foundMutations.length >= 2 && foundVariants.length >= 1) {
-    console.log(`[${source}] IGNORED DOUBLE MUTATION + VARIANT`);
-    return false;
-  }
-
-  if (foundVariants.length >= 2 && foundMutations.length >= 1) {
-    console.log(`[${source}] IGNORED DOUBLE VARIANT + MUTATION`);
-    return false;
-  }
+  if (foundMutations.length >= 3) return false;
+  if (foundVariants.length >= 3) return false;
+  if (foundMutations.length >= 2 && foundVariants.length >= 1) return false;
+  if (foundVariants.length >= 2 && foundMutations.length >= 1) return false;
 
   ensurePet(data, pet, petType);
 
@@ -355,7 +341,6 @@ function processHatchMessage(message, data, source = "LIVE") {
   const comboKey = normalizeCombo(foundMutations, foundVariants, serial);
   if (data[pet].processedCombos.includes(comboKey)) {
     markMessageProcessed(message.id);
-    console.log(`[${source}] DUPLICATE PET/SERIAL COMBO`);
     return false;
   }
 
@@ -385,15 +370,13 @@ function processHatchMessage(message, data, source = "LIVE") {
   return true;
 }
 
-async function runStartupCatchup(client) {
-  if (!STARTUP_CATCHUP_ENABLED) return;
-
-  console.log(`Running startup catch-up for last ${STARTUP_CATCHUP_LIMIT} messages...`);
-
+async function scanMessages(client, limit, sourceLabel, saveEvery = 0) {
   const channel = await client.channels.fetch(HATCH_CHANNEL_ID);
   let before;
-  let remaining = STARTUP_CATCHUP_LIMIT;
+  let remaining = limit;
   let changed = false;
+  let scanned = 0;
+  let savedCount = 0;
 
   while (remaining > 0) {
     const messages = await channel.messages.fetch({
@@ -408,20 +391,62 @@ async function runStartupCatchup(client) {
     );
 
     for (const m of sorted) {
-      if (processHatchMessage(m, petsData, "CATCHUP")) {
+      const didChange = processHatchMessage(m, petsData, sourceLabel);
+      if (didChange) {
         changed = true;
+        savedCount++;
       }
+
+      scanned++;
       remaining--;
+
+      if (saveEvery > 0 && scanned % saveEvery === 0 && changed) {
+        console.log(`[${sourceLabel}] Saving progress at ${scanned} scanned...`);
+        await saveRemoteData(`${sourceLabel} progress`);
+        changed = false;
+      }
     }
 
     before = messages.last().id;
   }
 
-  if (changed) {
-    await saveRemoteData("Startup catch-up");
+  return { scanned, savedCount, changed };
+}
+
+async function runStartupCatchup(client) {
+  if (!STARTUP_CATCHUP_ENABLED) return;
+
+  console.log(`Running startup catch-up for last ${STARTUP_CATCHUP_LIMIT} messages...`);
+
+  const result = await scanMessages(client, STARTUP_CATCHUP_LIMIT, "CATCHUP");
+
+  if (result.changed) {
+    console.log("Saving rebuilt data to GitHub...");
+    await saveRemoteData("Startup catch-up rebuild");
   }
 
-  console.log("Startup catch-up finished");
+  console.log(`Startup catch-up finished. Scanned ${result.scanned}, saved ${result.savedCount}`);
+}
+
+async function runFullBackfill(client) {
+  if (!FULL_BACKFILL_MODE) return;
+
+  console.log(`Running FULL BACKFILL for up to ${FULL_BACKFILL_LIMIT} messages...`);
+
+  const result = await scanMessages(
+    client,
+    FULL_BACKFILL_LIMIT,
+    "FULLBACKFILL",
+    BACKFILL_SAVE_EVERY
+  );
+
+  if (result.changed) {
+    console.log("Saving final full backfill data to GitHub...");
+    await saveRemoteData("Full backfill rebuild");
+  }
+
+  console.log(`Full backfill finished. Scanned ${result.scanned}, saved ${result.savedCount}`);
+  console.log("IMPORTANT: set FULL_BACKFILL_MODE back to false after this one-time rebuild.");
 }
 
 const client = new Client({
@@ -436,6 +461,7 @@ client.once("ready", async () => {
   console.log(`Bot online as ${client.user.tag}`);
   await loadRemoteData();
   await runStartupCatchup(client);
+  await runFullBackfill(client);
 });
 
 client.on("messageCreate", async (message) => {
