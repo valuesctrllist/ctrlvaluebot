@@ -2583,8 +2583,8 @@
   },
   "Huge Axolotl": {
     "type": "Huge",
-    "exists": 267,
-    "normal": 232,
+    "exists": 269,
+    "normal": 233,
     "mutations": {
       "Taco": 2,
       "Godlike": 12,
@@ -2863,7 +2863,8 @@
       "None_None_3",
       "None_None_4",
       "None_None_1",
-      "None_None_2"
+      "None_None_2",
+      "None_None_269"
     ]
   },
   "Huge Bear": {
