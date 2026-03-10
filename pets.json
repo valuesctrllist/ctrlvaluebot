@@ -3166,8 +3166,8 @@
   },
   "Huge Draconic Hydra": {
     "type": "Huge",
-    "exists": 8,
-    "normal": 7,
+    "exists": 10,
+    "normal": 8,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -3180,7 +3180,8 @@
       "None_None_4",
       "None_None_3",
       "None_None_2",
-      "None_None_1"
+      "None_None_1",
+      "None_None_10"
     ]
   },
   "Huge Gift Monkey": {
