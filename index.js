@@ -63,8 +63,8 @@ async function githubRequest(url, options = {}) {
   const res = await fetch(url, {
     ...options,
     headers: {
-      "Authorization": `Bearer ${GITHUB_TOKEN}`,
-      "Accept": "application/vnd.github+json",
+      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      Accept: "application/vnd.github+json",
       "Content-Type": "application/json",
       ...(options.headers || {})
     }
@@ -405,7 +405,6 @@ const client = new Client({
 
 client.once("ready", async () => {
   console.log(`Bot online as ${client.user.tag}`);
-
   await loadRemoteData();
   await runStartupCatchup(client);
 });
@@ -424,9 +423,33 @@ client.on("messageCreate", async (message) => {
   }
 });
 
-client.on("error", console.error);
-process.on("unhandledRejection", console.error);
-process.on("uncaughtException", console.error);
+client.on("error", (err) => {
+  console.error("CLIENT ERROR:", err);
+});
+
+client.on("warn", (msg) => {
+  console.warn("CLIENT WARN:", msg);
+});
+
+client.on("shardError", (err) => {
+  console.error("SHARD ERROR:", err);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.error("UNHANDLED REJECTION:", err);
+});
+
+process.on("uncaughtException", (err) => {
+  console.error("UNCAUGHT EXCEPTION:", err);
+});
 
 console.log("Attempting Discord login...");
-client.login(DISCORD_TOKEN);
+
+client.login(DISCORD_TOKEN)
+  .then(() => {
+    console.log("Discord login promise resolved");
+  })
+  .catch((err) => {
+    console.error("DISCORD LOGIN FAILED:");
+    console.error(err);
+  });
