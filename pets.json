@@ -828,7 +828,7 @@
   "Huge Admin Chest Mimic": {
     "type": "Huge",
     "exists": 1564,
-    "normal": 1134,
+    "normal": 1146,
     "mutations": {},
     "variants": {
       "Rainbow": 62,
@@ -2241,7 +2241,19 @@
       "None_None_327",
       "None_None_328",
       "None_None_329",
-      "None_None_330"
+      "None_None_330",
+      "None_None_302",
+      "None_None_303",
+      "None_None_304",
+      "None_None_305",
+      "None_None_306",
+      "None_None_307",
+      "None_None_309",
+      "None_None_311",
+      "None_None_312",
+      "None_None_314",
+      "None_None_315",
+      "None_None_301"
     ]
   },
   "Huge Axolotl": {
@@ -9058,7 +9070,7 @@
   "Huge Heart Balloon Koala": {
     "type": "Huge",
     "exists": 80,
-    "normal": 30,
+    "normal": 32,
     "mutations": {
       "Taco": 13,
       "Godlike": 3,
@@ -9128,23 +9140,25 @@
       "Godlike_None_7",
       "None_Rainbow|Shiny_1",
       "None_Rainbow|Super Shiny_1",
-      "None_None_49"
+      "None_None_49",
+      "None_None_47",
+      "None_None_48"
     ]
   },
   "Huge Lovely Wisp": {
     "type": "Huge",
     "exists": 320,
-    "normal": 144,
+    "normal": 151,
     "mutations": {
       "Godlike": 7,
-      "Taco": 6,
+      "Taco": 8,
       "Eclipsed": 1,
       "Lovely": 4,
       "Frozen": 2
     },
     "variants": {
       "Rainbow": 1,
-      "Shiny": 8,
+      "Shiny": 9,
       "Golden": 2,
       "Super Shiny": 1
     },
@@ -9327,7 +9341,17 @@
       "None_None_185",
       "Frozen_None_1",
       "None_Shiny_3",
-      "Frozen_None_2"
+      "Frozen_None_2",
+      "Taco_None_4",
+      "Taco_None_5",
+      "None_None_168",
+      "None_None_169",
+      "None_None_170",
+      "None_None_171",
+      "None_None_173",
+      "None_None_175",
+      "None_None_167",
+      "None_Shiny_2"
     ]
   },
   "Huge Crowned Cube Cat": {
@@ -9372,11 +9396,11 @@
   "Huge Broken Dog": {
     "type": "Huge",
     "exists": 649,
-    "normal": 366,
+    "normal": 367,
     "mutations": {
       "Rainy": 2,
       "Lovely": 2,
-      "Taco": 2,
+      "Taco": 3,
       "Moonlit": 2,
       "Electrified": 2,
       "Frozen": 1
@@ -9765,7 +9789,9 @@
       "None_None_285",
       "None_None_286",
       "None_None_287",
-      "None_None_288"
+      "None_None_288",
+      "Taco_None_1",
+      "None_None_281"
     ]
   },
   "Huge Malevolent Otter": {
@@ -9873,11 +9899,11 @@
   "Huge Love Bear": {
     "type": "Huge",
     "exists": 521,
-    "normal": 59,
+    "normal": 97,
     "mutations": {
       "Moonlit": 1,
       "Lovely": 1,
-      "Taco": 1,
+      "Taco": 3,
       "Godlike": 1,
       "Eclipsed": 1,
       "Frozen": 2
@@ -9955,7 +9981,47 @@
       "None_None_474",
       "None_None_473",
       "None_None_475",
-      "None_None_476"
+      "None_None_476",
+      "None_None_445",
+      "None_None_448",
+      "Taco_None_10",
+      "Taco_None_11",
+      "None_None_450",
+      "None_None_451",
+      "None_None_452",
+      "None_None_453",
+      "None_None_454",
+      "None_None_455",
+      "None_None_456",
+      "None_None_457",
+      "None_None_458",
+      "None_None_460",
+      "None_None_418",
+      "None_None_420",
+      "None_None_421",
+      "None_None_422",
+      "None_None_424",
+      "None_None_425",
+      "None_None_427",
+      "None_None_426",
+      "None_None_430",
+      "None_None_431",
+      "None_None_432",
+      "None_None_434",
+      "None_None_437",
+      "None_None_438",
+      "None_None_440",
+      "None_None_439",
+      "None_None_443",
+      "None_None_390",
+      "None_None_391",
+      "None_None_392",
+      "None_None_394",
+      "None_None_395",
+      "None_None_398",
+      "None_None_399",
+      "None_None_400",
+      "None_None_403"
     ]
   },
   "Huge Love Cat": {
@@ -10003,7 +10069,7 @@
   "Huge Lovely Peacock": {
     "type": "Huge",
     "exists": 52,
-    "normal": 5,
+    "normal": 11,
     "mutations": {
       "Lovely": 1
     },
@@ -10017,7 +10083,13 @@
       "None_None_49",
       "None_None_50",
       "Lovely_None_3",
-      "None_None_48"
+      "None_None_48",
+      "None_None_43",
+      "None_None_44",
+      "None_None_45",
+      "None_None_46",
+      "None_None_41",
+      "None_None_42"
     ]
   }
 }
