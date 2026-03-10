@@ -637,8 +637,8 @@
   },
   "Huge Cloudy Peacock": {
     "type": "Huge",
-    "exists": 26,
-    "normal": 17,
+    "exists": 28,
+    "normal": 18,
     "mutations": {
       "Taco": 1
     },
@@ -664,7 +664,8 @@
       "None_None_4",
       "None_None_3",
       "None_None_2",
-      "None_None_1"
+      "None_None_1",
+      "None_None_28"
     ]
   },
   "Huge Blue Chest Mimic": {
