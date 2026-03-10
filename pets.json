@@ -2907,7 +2907,7 @@
   "Huge Royal Dogcat": {
     "type": "Huge",
     "exists": 168,
-    "normal": 155,
+    "normal": 157,
     "mutations": {
       "Starstruck": 1,
       "Frozen": 4,
@@ -3089,7 +3089,9 @@
       "None_None_16",
       "None_None_12",
       "None_None_13",
-      "None_None_14"
+      "None_None_14",
+      "None_None_10",
+      "None_None_11"
     ]
   },
   "Huge Draconic Hydra": {
@@ -4654,7 +4656,7 @@
   "Huge Champion Cat": {
     "type": "Huge",
     "exists": 136,
-    "normal": 125,
+    "normal": 129,
     "mutations": {
       "Taco": 3,
       "Moonlit": 1,
@@ -4806,7 +4808,11 @@
       "None_None_15",
       "None_None_14",
       "None_None_13",
-      "None_None_12"
+      "None_None_12",
+      "None_None_11",
+      "None_None_8",
+      "None_None_9",
+      "None_None_10"
     ]
   },
   "Huge Fractured Dominus": {
@@ -4858,7 +4864,7 @@
   "Huge Royal Golem": {
     "type": "Huge",
     "exists": 38,
-    "normal": 26,
+    "normal": 28,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -4890,7 +4896,9 @@
       "None_None_17",
       "None_None_14",
       "None_None_13",
-      "None_None_12"
+      "None_None_12",
+      "None_None_10",
+      "None_None_11"
     ]
   },
   "Huge Royal Demon": {
@@ -5151,7 +5159,7 @@
   "Huge Clockwork Fox": {
     "type": "Huge",
     "exists": 62,
-    "normal": 52,
+    "normal": 57,
     "mutations": {},
     "variants": {
       "Golden": 1
@@ -5212,7 +5220,12 @@
       "None_None_13",
       "None_None_12",
       "None_None_10",
-      "None_None_11"
+      "None_None_11",
+      "None_None_6",
+      "None_None_7",
+      "None_None_8",
+      "None_None_9",
+      "None_None_5"
     ]
   },
   "Huge Cyborg Cat": {
@@ -5297,7 +5310,7 @@
   "Huge Steampunk Cat": {
     "type": "Huge",
     "exists": 59,
-    "normal": 30,
+    "normal": 40,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -5333,7 +5346,17 @@
       "None_None_32",
       "None_None_33",
       "None_None_34",
-      "None_None_35"
+      "None_None_35",
+      "None_None_21",
+      "None_None_22",
+      "None_None_23",
+      "None_None_24",
+      "None_None_25",
+      "None_None_26",
+      "None_None_27",
+      "None_None_28",
+      "None_None_19",
+      "None_None_20"
     ]
   },
   "Huge Glitch Werewolf": {
@@ -5429,7 +5452,7 @@
   "Huge Cosmic Dominus": {
     "type": "Huge",
     "exists": 485,
-    "normal": 419,
+    "normal": 426,
     "mutations": {
       "Taco": 18,
       "Godlike": 2,
@@ -5933,7 +5956,14 @@
       "None_None_57",
       "None_None_58",
       "None_None_59",
-      "None_None_60"
+      "None_None_60",
+      "None_None_56",
+      "None_None_50",
+      "None_None_51",
+      "None_None_52",
+      "None_None_53",
+      "None_None_54",
+      "None_None_55"
     ]
   },
   "Huge Mecha Dino": {
@@ -8041,7 +8071,7 @@
   "Huge Gummy Dragon": {
     "type": "Huge",
     "exists": 63,
-    "normal": 40,
+    "normal": 41,
     "mutations": {
       "Godlike": 1,
       "Lovely": 2
@@ -8100,7 +8130,8 @@
       "None_None_27",
       "None_None_28",
       "None_None_29",
-      "None_None_30"
+      "None_None_30",
+      "None_None_22"
     ]
   },
   "Huge Dogcat": {
@@ -8984,7 +9015,7 @@
   "Huge Steampunk Dogcat": {
     "type": "Huge",
     "exists": 21,
-    "normal": 14,
+    "normal": 15,
     "mutations": {},
     "variants": {
       "Shiny": 1
@@ -9007,7 +9038,8 @@
       "None_None_11",
       "None_None_10",
       "None_None_9",
-      "None_None_8"
+      "None_None_8",
+      "None_None_7"
     ]
   },
   "Huge Heart Balloon Capybara": {
@@ -12761,7 +12793,7 @@
   "Huge OG Overseer": {
     "type": "Huge",
     "exists": 31,
-    "normal": 7,
+    "normal": 8,
     "mutations": {},
     "variants": {},
     "combos": {},
@@ -12774,7 +12806,8 @@
       "None_None_28",
       "None_None_27",
       "None_None_25",
-      "None_None_26"
+      "None_None_26",
+      "None_None_24"
     ]
   },
   "Huge OG Gem": {
@@ -12832,7 +12865,7 @@
   "Huge Cupcake": {
     "type": "Huge",
     "exists": 141,
-    "normal": 66,
+    "normal": 84,
     "mutations": {
       "Taco": 4,
       "Frozen": 1
@@ -12920,7 +12953,25 @@
       "None_None_77",
       "None_None_78",
       "None_None_79",
-      "None_None_80"
+      "None_None_80",
+      "None_None_70",
+      "None_None_71",
+      "None_None_72",
+      "None_None_73",
+      "None_None_74",
+      "None_None_75",
+      "None_None_60",
+      "None_None_61",
+      "None_None_62",
+      "None_None_63",
+      "None_None_64",
+      "None_None_65",
+      "None_None_66",
+      "None_None_67",
+      "None_None_68",
+      "None_None_69",
+      "None_None_54",
+      "None_None_55"
     ]
   }
 }
