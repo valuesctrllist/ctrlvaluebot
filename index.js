@@ -22,7 +22,7 @@ const STARTUP_CATCHUP_LIMIT = 1000;
 // one-time rebuild
 const FULL_BACKFILL_MODE = true;
 const FULL_BACKFILL_LIMIT = 50000;
-const BACKFILL_SAVE_EVERY = 250;
+const BACKFILL_SAVE_EVERY = 1000;
 
 const PETS_FILE_PATH = "pets.json";
 const PROCESSED_FILE_PATH = "processedMessages.json";
@@ -184,19 +184,46 @@ async function saveRemoteData(reason = "Update hatch tracker data") {
     if (!petsSha) petsSha = await fetchFileSha(PETS_FILE_PATH);
     if (!processedSha) processedSha = await fetchFileSha(PROCESSED_FILE_PATH);
 
-    petsSha = await saveFileToGitHub(
-      PETS_FILE_PATH,
-      JSON.stringify(petsData, null, 2),
-      petsSha,
-      `${reason} - pets`
-    );
+    try {
+      petsSha = await saveFileToGitHub(
+        PETS_FILE_PATH,
+        JSON.stringify(petsData, null, 2),
+        petsSha,
+        `${reason} - pets`
+      );
 
-    processedSha = await saveFileToGitHub(
-      PROCESSED_FILE_PATH,
-      JSON.stringify(processedMessagesData, null, 2),
-      processedSha,
-      `${reason} - processed messages`
-    );
+      processedSha = await saveFileToGitHub(
+        PROCESSED_FILE_PATH,
+        JSON.stringify(processedMessagesData, null, 2),
+        processedSha,
+        `${reason} - processed messages`
+      );
+    } catch (err) {
+      const msg = String(err);
+
+      if (msg.includes("GitHub API error 409")) {
+        console.log("GitHub SHA conflict detected, refreshing SHA and retrying once...");
+
+        petsSha = await fetchFileSha(PETS_FILE_PATH);
+        processedSha = await fetchFileSha(PROCESSED_FILE_PATH);
+
+        petsSha = await saveFileToGitHub(
+          PETS_FILE_PATH,
+          JSON.stringify(petsData, null, 2),
+          petsSha,
+          `${reason} - pets`
+        );
+
+        processedSha = await saveFileToGitHub(
+          PROCESSED_FILE_PATH,
+          JSON.stringify(processedMessagesData, null, 2),
+          processedSha,
+          `${reason} - processed messages`
+        );
+      } else {
+        throw err;
+      }
+    }
 
     console.log("Saved data back to GitHub");
   } catch (err) {
