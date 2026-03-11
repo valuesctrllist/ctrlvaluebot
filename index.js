@@ -19,7 +19,7 @@ const LOCAL_PROCESSED_FILE = path.join(__dirname, "processedMessages.json");
 const STARTUP_CATCHUP_ENABLED = true;
 const STARTUP_CATCHUP_LIMIT = 1000;
 
-// one-time huge rebuild
+// one-time rebuild
 const FULL_BACKFILL_MODE = true;
 const FULL_BACKFILL_LIMIT = 50000;
 const BACKFILL_SAVE_EVERY = 250;
@@ -134,6 +134,31 @@ function writeLocalJson(localPath, data) {
   }
 }
 
+function makeBucket() {
+  return {
+    count: 0,
+    highestSerial: 0
+  };
+}
+
+function sumBucketMap(obj) {
+  let total = 0;
+  for (const key of Object.keys(obj || {})) {
+    total += obj[key]?.count || 0;
+  }
+  return total;
+}
+
+function recalcExists(petObj) {
+  petObj.exists =
+    (petObj.normal?.count || 0) +
+    sumBucketMap(petObj.mutations) +
+    sumBucketMap(petObj.variants) +
+    sumBucketMap(petObj.combos) +
+    sumBucketMap(petObj.doubleMutations) +
+    sumBucketMap(petObj.doubleVariants);
+}
+
 async function loadRemoteData() {
   console.log("Loading data from local cloned files...");
 
@@ -147,7 +172,6 @@ async function loadRemoteData() {
 
   console.log("Loaded local pets.json and processedMessages.json");
 
-  // IMPORTANT: do not fetch GitHub SHAs here
   petsSha = null;
   processedSha = null;
 }
@@ -186,7 +210,7 @@ function ensurePet(data, name, type) {
     data[name] = {
       type,
       exists: 0,
-      normal: 0,
+      normal: makeBucket(),
       mutations: {},
       variants: {},
       combos: {},
@@ -196,7 +220,13 @@ function ensurePet(data, name, type) {
     };
   }
 
-  if (typeof data[name].normal !== "number") data[name].normal = 0;
+  if (!data[name].normal || typeof data[name].normal !== "object") {
+    data[name].normal = makeBucket();
+  }
+
+  if (typeof data[name].normal.count !== "number") data[name].normal.count = 0;
+  if (typeof data[name].normal.highestSerial !== "number") data[name].normal.highestSerial = 0;
+
   if (!data[name].mutations) data[name].mutations = {};
   if (!data[name].variants) data[name].variants = {};
   if (!data[name].combos) data[name].combos = {};
@@ -205,9 +235,24 @@ function ensurePet(data, name, type) {
   if (!data[name].processedCombos) data[name].processedCombos = [];
 }
 
-function increment(obj, key) {
-  if (!obj[key]) obj[key] = 0;
-  obj[key]++;
+function ensureBucket(mapObj, key) {
+  if (!mapObj[key]) {
+    mapObj[key] = makeBucket();
+  }
+  if (typeof mapObj[key].count !== "number") mapObj[key].count = 0;
+  if (typeof mapObj[key].highestSerial !== "number") mapObj[key].highestSerial = 0;
+}
+
+function incrementBucket(bucket, serial) {
+  bucket.count += 1;
+  if (serial && serial > bucket.highestSerial) {
+    bucket.highestSerial = serial;
+  }
+}
+
+function incrementNamedBucket(mapObj, key, serial) {
+  ensureBucket(mapObj, key);
+  incrementBucket(mapObj[key], serial);
 }
 
 function extractSerial(text) {
@@ -332,10 +377,6 @@ function processHatchMessage(message, data, source = "LIVE") {
 
   ensurePet(data, pet, petType);
 
-  if (serial && serial > data[pet].exists) {
-    data[pet].exists = serial;
-  }
-
   const comboKey = normalizeCombo(foundMutations, foundVariants, serial);
   if (data[pet].processedCombos.includes(comboKey)) {
     markMessageProcessed(message.id);
@@ -349,19 +390,32 @@ function processHatchMessage(message, data, source = "LIVE") {
   }
 
   if (foundMutations.length === 0 && foundVariants.length === 0) {
-    data[pet].normal++;
+    incrementBucket(data[pet].normal, serial);
   } else if (foundMutations.length === 1 && foundVariants.length === 0) {
-    increment(data[pet].mutations, foundMutations[0]);
+    incrementNamedBucket(data[pet].mutations, foundMutations[0], serial);
   } else if (foundMutations.length === 0 && foundVariants.length === 1) {
-    increment(data[pet].variants, foundVariants[0]);
+    incrementNamedBucket(data[pet].variants, foundVariants[0], serial);
   } else if (foundMutations.length === 1 && foundVariants.length === 1) {
-    increment(data[pet].combos, `${foundMutations[0]} + ${foundVariants[0]}`);
+    incrementNamedBucket(
+      data[pet].combos,
+      `${foundMutations[0]} + ${foundVariants[0]}`,
+      serial
+    );
   } else if (foundMutations.length === 2) {
-    increment(data[pet].doubleMutations, foundMutations.sort().join(" + "));
+    incrementNamedBucket(
+      data[pet].doubleMutations,
+      foundMutations.sort().join(" + "),
+      serial
+    );
   } else if (foundVariants.length === 2) {
-    increment(data[pet].doubleVariants, foundVariants.sort().join(" + "));
+    incrementNamedBucket(
+      data[pet].doubleVariants,
+      foundVariants.sort().join(" + "),
+      serial
+    );
   }
 
+  recalcExists(data[pet]);
   markMessageProcessed(message.id);
 
   console.log(`[${source}] SAVED -> ${pet} (#${serial ?? "?"})`);
