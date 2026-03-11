@@ -1972,10 +1972,10 @@
   },
   "Huge Bob": {
     "type": "Huge",
-    "exists": 1312,
+    "exists": 1313,
     "normal": {
-      "count": 1232,
-      "highestSerial": 1754
+      "count": 1233,
+      "highestSerial": 1756
     },
     "mutations": {
       "Taco": {
@@ -3333,7 +3333,8 @@
       "None_None_11",
       "None_None_14",
       "None_None_15",
-      "None_None_1754"
+      "None_None_1754",
+      "None_None_1756"
     ]
   },
   "Huge Bob Stack": {
