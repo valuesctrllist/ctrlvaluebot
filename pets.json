@@ -279,8 +279,8 @@
   },
   "Huge Cloudy Ducky": {
     "type": "Huge",
-    "exists": 241,
-    "normal": 6,
+    "exists": 243,
+    "normal": 7,
     "mutations": {
       "Taco": 1
     },
@@ -295,7 +295,8 @@
       "None_None_241",
       "None_None_232",
       "None_None_234",
-      "Taco_None_3"
+      "Taco_None_3",
+      "None_None_243"
     ]
   },
   "Huge Admin Chest Mimic": {
