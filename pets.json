@@ -4623,9 +4623,9 @@
   },
   "Huge Royal Dogcat": {
     "type": "Huge",
-    "exists": 78,
+    "exists": 84,
     "normal": {
-      "count": 71,
+      "count": 77,
       "highestSerial": 170
     },
     "mutations": {
@@ -4733,7 +4733,13 @@
       "None_None_100",
       "None_None_99",
       "None_None_97",
-      "None_None_98"
+      "None_None_98",
+      "None_None_95",
+      "None_None_96",
+      "None_None_90",
+      "None_None_91",
+      "None_None_92",
+      "None_None_93"
     ]
   },
   "Huge Diamond Werewolf": {
@@ -5950,15 +5956,15 @@
   },
   "Huge Lucky Block Dog": {
     "type": "Huge",
-    "exists": 123,
+    "exists": 127,
     "normal": {
-      "count": 110,
+      "count": 113,
       "highestSerial": 167
     },
     "mutations": {},
     "variants": {
       "Rainbow": {
-        "count": 6,
+        "count": 7,
         "highestSerial": 7
       },
       "Golden": {
@@ -6096,7 +6102,11 @@
       "None_None_60",
       "None_None_56",
       "None_None_57",
-      "None_None_55"
+      "None_None_55",
+      "None_Rainbow_1",
+      "None_None_54",
+      "None_None_52",
+      "None_None_53"
     ]
   },
   "Huge Frosty Hydra": {
@@ -6390,9 +6400,9 @@
   },
   "Huge Cosmic Dominus": {
     "type": "Huge",
-    "exists": 131,
+    "exists": 132,
     "normal": {
-      "count": 117,
+      "count": 118,
       "highestSerial": 505
     },
     "mutations": {
@@ -6557,7 +6567,8 @@
       "None_None_381",
       "None_None_383",
       "None_None_384",
-      "None_None_385"
+      "None_None_385",
+      "None_None_374"
     ]
   },
   "Huge Heart Balloon Koala": {
@@ -6748,9 +6759,9 @@
   },
   "Huge Gift Cat": {
     "type": "Huge",
-    "exists": 11,
+    "exists": 12,
     "normal": {
-      "count": 10,
+      "count": 11,
       "highestSerial": 13
     },
     "mutations": {},
@@ -6774,7 +6785,8 @@
       "None_None_5",
       "None_Golden_1",
       "None_None_4",
-      "None_None_3"
+      "None_None_3",
+      "None_None_2"
     ]
   },
   "Huge Fractured Dominus": {
@@ -10233,9 +10245,9 @@
   },
   "Huge Heart Balloon Capybara": {
     "type": "Huge",
-    "exists": 87,
+    "exists": 101,
     "normal": {
-      "count": 83,
+      "count": 97,
       "highestSerial": 397
     },
     "mutations": {},
@@ -10343,14 +10355,28 @@
       "None_None_318",
       "None_None_315",
       "None_None_316",
-      "None_None_317"
+      "None_None_317",
+      "None_None_309",
+      "None_None_310",
+      "None_None_311",
+      "None_None_312",
+      "None_None_313",
+      "None_None_314",
+      "None_None_303",
+      "None_None_304",
+      "None_None_305",
+      "None_None_306",
+      "None_None_307",
+      "None_None_308",
+      "None_None_296",
+      "None_None_297"
     ]
   },
   "Huge Steampunk Dogcat": {
     "type": "Huge",
-    "exists": 5,
+    "exists": 6,
     "normal": {
-      "count": 4,
+      "count": 5,
       "highestSerial": 21
     },
     "mutations": {},
@@ -10368,7 +10394,8 @@
       "None_None_20",
       "None_None_21",
       "None_None_19",
-      "None_None_18"
+      "None_None_18",
+      "None_None_16"
     ]
   },
   "Huge Corrupted Wyvern": {
@@ -10538,9 +10565,9 @@
   },
   "Huge Clockwork Dragon": {
     "type": "Huge",
-    "exists": 3,
+    "exists": 4,
     "normal": {
-      "count": 3,
+      "count": 4,
       "highestSerial": 7
     },
     "mutations": {},
@@ -10551,14 +10578,15 @@
     "processedCombos": [
       "None_None_7",
       "None_None_6",
-      "None_None_5"
+      "None_None_5",
+      "None_None_4"
     ]
   },
   "Huge Lovely Wisp": {
     "type": "Huge",
-    "exists": 49,
+    "exists": 63,
     "normal": {
-      "count": 39,
+      "count": 50,
       "highestSerial": 320
     },
     "mutations": {
@@ -10569,6 +10597,14 @@
       "Taco": {
         "count": 4,
         "highestSerial": 11
+      },
+      "Eclipsed": {
+        "count": 1,
+        "highestSerial": 2
+      },
+      "Lovely": {
+        "count": 1,
+        "highestSerial": 6
       }
     },
     "variants": {
@@ -10577,7 +10613,7 @@
         "highestSerial": 2
       },
       "Shiny": {
-        "count": 1,
+        "count": 2,
         "highestSerial": 10
       }
     },
@@ -10633,7 +10669,21 @@
       "None_None_285",
       "None_None_286",
       "None_None_287",
-      "None_None_288"
+      "None_None_288",
+      "None_None_280",
+      "None_None_281",
+      "Eclipsed_None_2",
+      "None_None_273",
+      "None_None_274",
+      "None_None_275",
+      "None_None_276",
+      "None_None_277",
+      "None_None_278",
+      "None_None_279",
+      "None_Shiny_9",
+      "Lovely_None_6",
+      "None_None_266",
+      "None_None_267"
     ]
   },
   "Huge Crowned Cube Cat": {
@@ -10678,12 +10728,17 @@
   },
   "Huge Broken Dog": {
     "type": "Huge",
-    "exists": 10,
+    "exists": 55,
     "normal": {
-      "count": 10,
+      "count": 54,
       "highestSerial": 649
     },
-    "mutations": {},
+    "mutations": {
+      "Rainy": {
+        "count": 1,
+        "highestSerial": 2
+      }
+    },
     "variants": {},
     "combos": {},
     "doubleMutations": {},
@@ -10698,17 +10753,67 @@
       "None_None_646",
       "None_None_647",
       "None_None_648",
-      "None_None_649"
+      "None_None_649",
+      "None_None_625",
+      "None_None_626",
+      "None_None_627",
+      "None_None_628",
+      "None_None_629",
+      "None_None_630",
+      "None_None_631",
+      "None_None_632",
+      "None_None_633",
+      "None_None_634",
+      "None_None_635",
+      "None_None_636",
+      "None_None_637",
+      "None_None_638",
+      "None_None_639",
+      "None_None_610",
+      "None_None_611",
+      "None_None_612",
+      "None_None_613",
+      "None_None_614",
+      "None_None_615",
+      "None_None_616",
+      "None_None_617",
+      "None_None_618",
+      "None_None_619",
+      "None_None_620",
+      "None_None_621",
+      "None_None_622",
+      "Rainy_None_2",
+      "None_None_623",
+      "None_None_624",
+      "None_None_587",
+      "None_None_588",
+      "None_None_589",
+      "None_None_590",
+      "None_None_591",
+      "None_None_592",
+      "None_None_593",
+      "None_None_594",
+      "None_None_595",
+      "None_None_596",
+      "None_None_597",
+      "None_None_598",
+      "None_None_599",
+      "None_None_600"
     ]
   },
   "Huge Malevolent Otter": {
     "type": "Huge",
-    "exists": 3,
+    "exists": 14,
     "normal": {
-      "count": 3,
+      "count": 13,
       "highestSerial": 113
     },
-    "mutations": {},
+    "mutations": {
+      "Rainy": {
+        "count": 1,
+        "highestSerial": 1
+      }
+    },
     "variants": {},
     "combos": {},
     "doubleMutations": {},
@@ -10716,7 +10821,71 @@
     "processedCombos": [
       "None_None_111",
       "None_None_112",
-      "None_None_113"
+      "None_None_113",
+      "None_None_109",
+      "None_None_110",
+      "None_None_103",
+      "None_None_104",
+      "Rainy_None_1",
+      "None_None_105",
+      "None_None_106",
+      "None_None_107",
+      "None_None_108",
+      "None_None_99",
+      "None_None_100"
+    ]
+  },
+  "Huge Steampunk Demon": {
+    "type": "Huge",
+    "exists": 1,
+    "normal": {
+      "count": 1,
+      "highestSerial": 2
+    },
+    "mutations": {},
+    "variants": {},
+    "combos": {},
+    "doubleMutations": {},
+    "doubleVariants": {},
+    "processedCombos": [
+      "None_None_2"
+    ]
+  },
+  "Huge Love Bear": {
+    "type": "Huge",
+    "exists": 1,
+    "normal": {
+      "count": 0,
+      "highestSerial": 0
+    },
+    "mutations": {},
+    "variants": {
+      "Shiny": {
+        "count": 1,
+        "highestSerial": 10
+      }
+    },
+    "combos": {},
+    "doubleMutations": {},
+    "doubleVariants": {},
+    "processedCombos": [
+      "None_Shiny_10"
+    ]
+  },
+  "Huge Love Cat": {
+    "type": "Huge",
+    "exists": 1,
+    "normal": {
+      "count": 1,
+      "highestSerial": 35
+    },
+    "mutations": {},
+    "variants": {},
+    "combos": {},
+    "doubleMutations": {},
+    "doubleVariants": {},
+    "processedCombos": [
+      "None_None_35"
     ]
   }
 }
