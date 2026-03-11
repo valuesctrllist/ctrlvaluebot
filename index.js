@@ -20,7 +20,7 @@ const STARTUP_CATCHUP_ENABLED = true;
 const STARTUP_CATCHUP_LIMIT = 1000;
 
 // one-time rebuild
-const FULL_BACKFILL_MODE = true;
+const FULL_BACKFILL_MODE = false;
 const FULL_BACKFILL_LIMIT = 50000;
 const BACKFILL_SAVE_EVERY = 1000;
 
@@ -585,3 +585,4 @@ client.login(DISCORD_TOKEN)
     console.error("DISCORD LOGIN FAILED:");
     console.error(err);
   });
+
