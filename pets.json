@@ -4847,10 +4847,10 @@
   },
   "Huge Mr. Cat": {
     "type": "Huge",
-    "exists": 628,
+    "exists": 629,
     "normal": {
-      "count": 547,
-      "highestSerial": 614
+      "count": 548,
+      "highestSerial": 616
     },
     "mutations": {
       "Rainy": {
@@ -5548,7 +5548,8 @@
       "None_None_5",
       "None_Shiny_1",
       "None_None_6",
-      "None_None_7"
+      "None_None_7",
+      "None_None_616"
     ]
   },
   "Huge Dual Cat": {
