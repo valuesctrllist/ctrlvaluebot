@@ -2283,9 +2283,9 @@
   },
   "Huge Admin Chest Mimic": {
     "type": "Huge",
-    "exists": 902,
+    "exists": 906,
     "normal": {
-      "count": 896,
+      "count": 900,
       "highestSerial": 1713
     },
     "mutations": {},
@@ -3421,7 +3421,11 @@
       "None_None_660",
       "None_None_661",
       "None_None_662",
-      "None_None_663"
+      "None_None_663",
+      "None_None_652",
+      "None_None_653",
+      "None_None_654",
+      "None_None_655"
     ]
   },
   "Huge Pixel Knight Demon": {
@@ -4398,9 +4402,9 @@
   },
   "Huge Mr. Cat": {
     "type": "Huge",
-    "exists": 319,
+    "exists": 321,
     "normal": {
-      "count": 290,
+      "count": 292,
       "highestSerial": 577
     },
     "mutations": {
@@ -4787,7 +4791,9 @@
       "None_None_249",
       "None_None_246",
       "None_None_247",
-      "None_None_245"
+      "None_None_245",
+      "None_None_244",
+      "None_None_243"
     ]
   },
   "Huge Frog": {
@@ -5526,9 +5532,9 @@
   },
   "Huge Cosmic Dominus": {
     "type": "Huge",
-    "exists": 75,
+    "exists": 101,
     "normal": {
-      "count": 70,
+      "count": 95,
       "highestSerial": 505
     },
     "mutations": {
@@ -5550,6 +5556,10 @@
       "Golden": {
         "count": 1,
         "highestSerial": 5
+      },
+      "Shiny": {
+        "count": 1,
+        "highestSerial": 7
       }
     },
     "combos": {},
@@ -5636,7 +5646,33 @@
       "None_None_426",
       "None_None_428",
       "None_None_424",
-      "None_None_423"
+      "None_None_423",
+      "None_None_392",
+      "None_None_393",
+      "None_None_394",
+      "None_None_395",
+      "None_None_396",
+      "None_None_397",
+      "None_None_398",
+      "None_None_399",
+      "None_None_400",
+      "None_None_401",
+      "None_None_402",
+      "None_None_403",
+      "None_None_404",
+      "None_None_405",
+      "None_None_406",
+      "None_Shiny_7",
+      "None_None_407",
+      "None_None_408",
+      "None_None_409",
+      "None_None_410",
+      "None_None_411",
+      "None_None_412",
+      "None_None_413",
+      "None_None_414",
+      "None_None_415",
+      "None_None_416"
     ]
   },
   "Huge Heart Balloon Koala": {
@@ -6985,9 +7021,9 @@
   },
   "Huge Heart Balloon Dragon": {
     "type": "Huge",
-    "exists": 4,
+    "exists": 5,
     "normal": {
-      "count": 3,
+      "count": 4,
       "highestSerial": 31
     },
     "mutations": {
@@ -7004,7 +7040,8 @@
       "Godlike_None_1",
       "None_None_31",
       "None_None_30",
-      "None_None_29"
+      "None_None_29",
+      "None_None_28"
     ]
   },
   "Huge Corrupted Dog": {
@@ -7189,9 +7226,9 @@
   },
   "Huge Dogcat": {
     "type": "Huge",
-    "exists": 165,
+    "exists": 167,
     "normal": {
-      "count": 165,
+      "count": 167,
       "highestSerial": 217
     },
     "mutations": {},
@@ -7364,7 +7401,9 @@
       "None_None_61",
       "None_None_52",
       "None_None_53",
-      "None_None_54"
+      "None_None_54",
+      "None_None_48",
+      "None_None_49"
     ]
   },
   "Huge Trophy Cat": {
@@ -7439,12 +7478,17 @@
   },
   "Huge 100k Dog": {
     "type": "Huge",
-    "exists": 197,
+    "exists": 200,
     "normal": {
-      "count": 195,
+      "count": 197,
       "highestSerial": 873
     },
-    "mutations": {},
+    "mutations": {
+      "Starstruck": {
+        "count": 1,
+        "highestSerial": 1
+      }
+    },
     "variants": {
       "Shiny": {
         "count": 1,
@@ -7655,7 +7699,10 @@
       "None_None_692",
       "None_None_693",
       "None_None_694",
-      "None_None_695"
+      "None_None_695",
+      "Starstruck_None_1",
+      "None_None_670",
+      "None_None_671"
     ]
   },
   "Huge Koala": {
@@ -8230,9 +8277,9 @@
   },
   "Huge Heart Balloon Capybara": {
     "type": "Huge",
-    "exists": 40,
+    "exists": 41,
     "normal": {
-      "count": 38,
+      "count": 39,
       "highestSerial": 397
     },
     "mutations": {},
@@ -8289,7 +8336,8 @@
       "None_None_364",
       "None_None_365",
       "None_None_361",
-      "None_None_360"
+      "None_None_360",
+      "None_None_359"
     ]
   },
   "Huge Steampunk Dogcat": {
