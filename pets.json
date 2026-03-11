@@ -1,9 +1,9 @@
 {
   "Huge Bob Stack": {
     "type": "Huge",
-    "exists": 90,
+    "exists": 102,
     "normal": {
-      "count": 88,
+      "count": 100,
       "highestSerial": 129
     },
     "mutations": {
@@ -136,7 +136,19 @@
       "None_None_35",
       "None_None_36",
       "None_None_29",
-      "None_None_30"
+      "None_None_30",
+      "None_None_31",
+      "None_None_32",
+      "None_None_23",
+      "None_None_24",
+      "None_None_25",
+      "None_None_26",
+      "None_None_27",
+      "None_None_28",
+      "None_None_19",
+      "None_None_20",
+      "None_None_21",
+      "None_None_22"
     ]
   },
   "Huge Dual Cat": {
@@ -908,15 +920,19 @@
   },
   "Huge Bob": {
     "type": "Huge",
-    "exists": 903,
+    "exists": 971,
     "normal": {
-      "count": 902,
+      "count": 968,
       "highestSerial": 1214
     },
     "mutations": {
       "Taco": 18,
       "Godlike": 1,
       "Eclipsed": {
+        "count": 1,
+        "highestSerial": 1
+      },
+      "Starstruck": {
         "count": 1,
         "highestSerial": 1
       }
@@ -927,7 +943,11 @@
       "Shiny": 2
     },
     "combos": {
-      "Taco + Golden": 1
+      "Taco + Golden": 1,
+      "Godlike + Rainbow": {
+        "count": 1,
+        "highestSerial": 1
+      }
     },
     "doubleMutations": {},
     "doubleVariants": {},
@@ -2067,14 +2087,83 @@
       "None_None_182",
       "None_None_183",
       "None_None_184",
-      "None_None_186"
+      "None_None_186",
+      "None_None_187",
+      "None_None_188",
+      "None_None_189",
+      "None_None_190",
+      "None_None_191",
+      "None_None_192",
+      "None_None_193",
+      "None_None_194",
+      "None_None_195",
+      "None_None_196",
+      "None_None_197",
+      "None_None_198",
+      "None_None_199",
+      "None_None_200",
+      "None_None_201",
+      "None_None_202",
+      "None_None_203",
+      "None_None_144",
+      "None_None_145",
+      "None_None_146",
+      "None_None_147",
+      "None_None_148",
+      "None_None_149",
+      "None_None_150",
+      "None_None_151",
+      "None_None_152",
+      "None_None_153",
+      "None_None_154",
+      "None_None_155",
+      "None_None_156",
+      "None_None_157",
+      "None_None_158",
+      "None_None_159",
+      "None_None_160",
+      "None_None_161",
+      "None_None_162",
+      "None_None_163",
+      "None_None_164",
+      "Starstruck_None_1",
+      "None_None_165",
+      "None_None_166",
+      "None_None_167",
+      "None_None_168",
+      "None_None_169",
+      "None_None_170",
+      "None_None_121",
+      "None_Shiny_2",
+      "None_None_122",
+      "None_None_123",
+      "None_None_124",
+      "None_None_125",
+      "None_None_126",
+      "None_None_127",
+      "None_None_128",
+      "Godlike_Rainbow_1",
+      "None_None_129",
+      "None_None_130",
+      "None_None_131",
+      "None_None_132",
+      "None_None_133",
+      "None_None_134",
+      "None_None_135",
+      "None_None_136",
+      "None_None_138",
+      "None_None_139",
+      "None_None_140",
+      "None_None_141",
+      "None_None_142",
+      "None_None_143"
     ]
   },
   "Huge Admin Chest Mimic": {
     "type": "Huge",
-    "exists": 843,
+    "exists": 847,
     "normal": {
-      "count": 837,
+      "count": 841,
       "highestSerial": 1713
     },
     "mutations": {},
@@ -3138,7 +3227,17 @@
       "None_None_721",
       "None_None_719",
       "None_None_720",
-      "None_None_716"
+      "None_None_716",
+      "None_None_717",
+      "None_None_718",
+      "None_None_715",
+      "None_None_714",
+      "None_Shiny_38",
+      "None_Shiny_39",
+      "None_Shiny_40",
+      "None_Shiny_42",
+      "None_Shiny_43",
+      "None_Shiny_44"
     ]
   },
   "Huge Pixel Knight Demon": {
@@ -3178,9 +3277,9 @@
   },
   "Huge Axolotl": {
     "type": "Huge",
-    "exists": 295,
+    "exists": 308,
     "normal": {
-      "count": 280,
+      "count": 293,
       "highestSerial": 394
     },
     "mutations": {
@@ -3584,7 +3683,23 @@
       "None_None_29",
       "None_None_31",
       "None_None_32",
-      "None_None_26"
+      "None_None_26",
+      "None_None_25",
+      "None_None_13",
+      "None_None_14",
+      "None_None_15",
+      "None_None_16",
+      "None_None_17",
+      "None_None_18",
+      "Godlike_None_4",
+      "None_None_19",
+      "None_None_20",
+      "Godlike_None_5",
+      "None_None_21",
+      "Godlike_None_6",
+      "None_None_22",
+      "None_None_23",
+      "None_None_24"
     ]
   },
   "Huge Draconic Hydra": {
@@ -5301,9 +5416,9 @@
   },
   "Huge Champion Cat": {
     "type": "Huge",
-    "exists": 44,
+    "exists": 45,
     "normal": {
-      "count": 41,
+      "count": 42,
       "highestSerial": 143
     },
     "mutations": {
@@ -5369,7 +5484,8 @@
       "None_None_103",
       "None_None_102",
       "None_None_101",
-      "None_None_100"
+      "None_None_100",
+      "None_None_99"
     ]
   },
   "Huge Glitch Werewolf": {
