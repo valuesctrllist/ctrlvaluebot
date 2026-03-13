@@ -1,10 +1,10 @@
 {
   "Huge Dual Cat": {
     "type": "Huge",
-    "exists": 604,
+    "exists": 605,
     "normal": {
-      "count": 552,
-      "highestSerial": 748
+      "count": 553,
+      "highestSerial": 750
     },
     "mutations": {},
     "variants": {
@@ -632,7 +632,8 @@
       "None_None_3",
       "None_Rainbow_1",
       "None_None_746",
-      "None_None_748"
+      "None_None_748",
+      "None_None_750"
     ]
   },
   "Huge Cloudy Ducky": {
@@ -2063,10 +2064,10 @@
   },
   "Huge Cyclops": {
     "type": "Huge",
-    "exists": 105,
+    "exists": 106,
     "normal": {
-      "count": 105,
-      "highestSerial": 151
+      "count": 106,
+      "highestSerial": 153
     },
     "mutations": {},
     "variants": {},
@@ -2178,7 +2179,8 @@
       "None_None_5",
       "None_None_3",
       "None_None_2",
-      "None_None_1"
+      "None_None_1",
+      "None_None_153"
     ]
   },
   "Huge Champion Cat": {
@@ -4539,7 +4541,7 @@
   },
   "Huge Axolotl": {
     "type": "Huge",
-    "exists": 403,
+    "exists": 404,
     "normal": {
       "count": 351,
       "highestSerial": 486
@@ -4564,8 +4566,8 @@
     },
     "variants": {
       "Shiny": {
-        "count": 4,
-        "highestSerial": 4
+        "count": 5,
+        "highestSerial": 6
       },
       "Golden": {
         "count": 1,
@@ -4999,7 +5001,8 @@
       "None_None_2",
       "None_None_3",
       "None_None_4",
-      "None_None_1"
+      "None_None_1",
+      "None_Shiny_6"
     ]
   },
   "Huge Dual Dog": {
