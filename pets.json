@@ -1,10 +1,10 @@
 {
   "Huge Dual Cat": {
     "type": "Huge",
-    "exists": 602,
+    "exists": 603,
     "normal": {
-      "count": 550,
-      "highestSerial": 744
+      "count": 551,
+      "highestSerial": 746
     },
     "mutations": {},
     "variants": {
@@ -630,7 +630,8 @@
       "None_None_1",
       "None_None_2",
       "None_None_3",
-      "None_Rainbow_1"
+      "None_Rainbow_1",
+      "None_None_746"
     ]
   },
   "Huge Cloudy Ducky": {
