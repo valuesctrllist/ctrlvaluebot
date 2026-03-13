@@ -911,10 +911,10 @@
   },
   "Huge Evil Imp": {
     "type": "Huge",
-    "exists": 200,
+    "exists": 201,
     "normal": {
-      "count": 186,
-      "highestSerial": 292
+      "count": 187,
+      "highestSerial": 294
     },
     "mutations": {
       "Godlike": {
@@ -1147,7 +1147,8 @@
       "None_None_3",
       "None_None_4",
       "None_None_5",
-      "None_None_1"
+      "None_None_1",
+      "None_None_294"
     ]
   },
   "Huge Cosmic Dominus": {
