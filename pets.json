@@ -1,10 +1,10 @@
 {
   "Huge Evil Imp": {
     "type": "Huge",
-    "exists": 308,
+    "exists": 310,
     "normal": {
-      "count": 44,
-      "highestSerial": 300
+      "count": 45,
+      "highestSerial": 302
     },
     "mutations": {},
     "variants": {
@@ -61,7 +61,8 @@
       "None_None_222",
       "None_None_224",
       "None_None_216",
-      "None_None_218"
+      "None_None_218",
+      "None_None_302"
     ]
   },
   "Huge Dual Cat": {
