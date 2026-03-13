@@ -11,7 +11,7 @@ http.createServer((req, res) => {
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const HATCH_CHANNEL_ID = process.env.HATCH_CHANNEL_ID;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_REPO = process.env.GITHUB_REPO; // owner/repo
+const GITHUB_REPO = process.env.GITHUB_REPO;
 
 const LOCAL_PETS_FILE = path.join(__dirname, "pets.json");
 const LOCAL_PROCESSED_FILE = path.join(__dirname, "processedMessages.json");
@@ -19,7 +19,6 @@ const LOCAL_PROCESSED_FILE = path.join(__dirname, "processedMessages.json");
 const STARTUP_CATCHUP_ENABLED = true;
 const STARTUP_CATCHUP_LIMIT = 1000;
 
-// one-time rebuild
 const FULL_BACKFILL_MODE = false;
 const FULL_BACKFILL_LIMIT = 50000;
 const BACKFILL_SAVE_EVERY = 1000;
@@ -141,22 +140,22 @@ function makeBucket() {
   };
 }
 
-function sumBucketMap(obj) {
+function sumHighestSerials(obj) {
   let total = 0;
   for (const key of Object.keys(obj || {})) {
-    total += obj[key]?.count || 0;
+    total += obj[key]?.highestSerial || 0;
   }
   return total;
 }
 
 function recalcExists(petObj) {
   petObj.exists =
-    (petObj.normal?.count || 0) +
-    sumBucketMap(petObj.mutations) +
-    sumBucketMap(petObj.variants) +
-    sumBucketMap(petObj.combos) +
-    sumBucketMap(petObj.doubleMutations) +
-    sumBucketMap(petObj.doubleVariants);
+    (petObj.normal?.highestSerial || 0) +
+    sumHighestSerials(petObj.mutations) +
+    sumHighestSerials(petObj.variants) +
+    sumHighestSerials(petObj.combos) +
+    sumHighestSerials(petObj.doubleMutations) +
+    sumHighestSerials(petObj.doubleVariants);
 }
 
 async function loadRemoteData() {
@@ -351,8 +350,32 @@ function markMessageProcessed(messageId) {
   }
 }
 
+function categoryLabel(foundMutations, foundVariants) {
+  if (foundMutations.length === 0 && foundVariants.length === 0) {
+    return "Normal";
+  }
+  if (foundMutations.length === 1 && foundVariants.length === 0) {
+    return foundMutations[0];
+  }
+  if (foundMutations.length === 0 && foundVariants.length === 1) {
+    return foundVariants[0];
+  }
+  if (foundMutations.length === 1 && foundVariants.length === 1) {
+    return `${foundMutations[0]} + ${foundVariants[0]}`;
+  }
+  if (foundMutations.length === 2) {
+    return foundMutations.sort().join(" + ");
+  }
+  if (foundVariants.length === 2) {
+    return foundVariants.sort().join(" + ");
+  }
+  return "Unknown";
+}
+
 function processHatchMessage(message, data, source = "LIVE") {
-  if (processedMessageIds.has(message.id)) return false;
+  if (processedMessageIds.has(message.id)) {
+    return false;
+  }
 
   const text = buildMessageText(message);
   const lower = text.toLowerCase();
@@ -367,7 +390,10 @@ function processHatchMessage(message, data, source = "LIVE") {
   }
 
   const match = text.match(/just (got|hatched) a (.+?)!/i);
-  if (!match) return false;
+  if (!match) {
+    console.log(`[${source}] NO HATCH MATCH`);
+    return false;
+  }
 
   const drop = match[2].trim();
 
@@ -445,7 +471,9 @@ function processHatchMessage(message, data, source = "LIVE") {
   recalcExists(data[pet]);
   markMessageProcessed(message.id);
 
-  console.log(`[${source}] SAVED -> ${pet} (#${serial ?? "?"})`);
+  console.log(
+    `[${source}] SAVED -> ${categoryLabel(foundMutations, foundVariants)} ${pet} (#${serial ?? "?"})`
+  );
   return true;
 }
 
@@ -546,9 +574,20 @@ client.on("messageCreate", async (message) => {
     if (message.channel.id !== HATCH_CHANNEL_ID) return;
     if (message.author.id === client.user.id) return;
 
+    console.log("----- LIVE MESSAGE SEEN -----");
+    console.log(`Author: ${message.author.tag}`);
+    console.log(`Channel: ${message.channel.id}`);
+
+    const rawText = buildMessageText(message);
+    console.log(rawText || "[empty message]");
+
     const changed = processHatchMessage(message, petsData, "LIVE");
+
     if (changed) {
+      console.log("[LIVE] Hatch counted, saving...");
       await saveRemoteData("Live hatch update");
+    } else {
+      console.log("[LIVE] Message seen but not counted");
     }
   } catch (err) {
     console.error("messageCreate error:", err);
