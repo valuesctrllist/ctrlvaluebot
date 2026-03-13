@@ -3835,10 +3835,10 @@
   },
   "Huge Spirit Cat": {
     "type": "Huge",
-    "exists": 47,
+    "exists": 48,
     "normal": {
-      "count": 47,
-      "highestSerial": 53
+      "count": 48,
+      "highestSerial": 55
     },
     "mutations": {},
     "variants": {},
@@ -3892,7 +3892,8 @@
       "None_None_3",
       "None_None_4",
       "None_None_2",
-      "None_None_1"
+      "None_None_1",
+      "None_None_55"
     ]
   },
   "Huge Frog": {
