@@ -1,7 +1,7 @@
 {
   "Huge Dual Cat": {
     "type": "Huge",
-    "exists": 605,
+    "exists": 606,
     "normal": {
       "count": 553,
       "highestSerial": 750
@@ -13,8 +13,8 @@
         "highestSerial": 20
       },
       "Golden": {
-        "count": 29,
-        "highestSerial": 40
+        "count": 30,
+        "highestSerial": 42
       },
       "Super Shiny": {
         "count": 4,
@@ -633,7 +633,8 @@
       "None_Rainbow_1",
       "None_None_746",
       "None_None_748",
-      "None_None_750"
+      "None_None_750",
+      "None_Golden_42"
     ]
   },
   "Huge Cloudy Ducky": {
