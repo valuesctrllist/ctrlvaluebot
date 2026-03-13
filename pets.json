@@ -7259,10 +7259,10 @@
   },
   "Huge Lucky Block Dog": {
     "type": "Huge",
-    "exists": 180,
+    "exists": 181,
     "normal": {
-      "count": 163,
-      "highestSerial": 171
+      "count": 164,
+      "highestSerial": 172
     },
     "mutations": {},
     "variants": {
@@ -7462,7 +7462,8 @@
       "None_None_6",
       "None_None_4",
       "None_None_5",
-      "None_None_3"
+      "None_None_3",
+      "None_None_172"
     ]
   },
   "Huge Bear": {
