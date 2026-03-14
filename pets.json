@@ -263,10 +263,10 @@
   },
   "Huge Cyclops": {
     "type": "Huge",
-    "exists": 165,
+    "exists": 167,
     "normal": {
-      "count": 27,
-      "highestSerial": 165
+      "count": 28,
+      "highestSerial": 167
     },
     "mutations": {},
     "variants": {},
@@ -300,7 +300,8 @@
       "None_None_159",
       "None_None_161",
       "None_None_163",
-      "None_None_165"
+      "None_None_165",
+      "None_None_167"
     ]
   },
   "Huge Axolotl": {
