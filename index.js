@@ -1,7 +1,11 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const { Client, GatewayIntentBits } = require("discord.js");
+const {
+  Client,
+  GatewayIntentBits,
+  Events
+} = require("discord.js");
 
 http.createServer((req, res) => {
   res.writeHead(200);
@@ -51,6 +55,7 @@ let petsData = {};
 let processedMessagesData = [];
 let petsSha = null;
 let processedSha = null;
+let heartbeatInterval = null;
 
 console.log("Starting bot...");
 console.log("Has DISCORD_TOKEN:", !!DISCORD_TOKEN);
@@ -351,24 +356,14 @@ function markMessageProcessed(messageId) {
 }
 
 function categoryLabel(foundMutations, foundVariants) {
-  if (foundMutations.length === 0 && foundVariants.length === 0) {
-    return "Normal";
-  }
-  if (foundMutations.length === 1 && foundVariants.length === 0) {
-    return foundMutations[0];
-  }
-  if (foundMutations.length === 0 && foundVariants.length === 1) {
-    return foundVariants[0];
-  }
+  if (foundMutations.length === 0 && foundVariants.length === 0) return "Normal";
+  if (foundMutations.length === 1 && foundVariants.length === 0) return foundMutations[0];
+  if (foundMutations.length === 0 && foundVariants.length === 1) return foundVariants[0];
   if (foundMutations.length === 1 && foundVariants.length === 1) {
     return `${foundMutations[0]} + ${foundVariants[0]}`;
   }
-  if (foundMutations.length === 2) {
-    return foundMutations.sort().join(" + ");
-  }
-  if (foundVariants.length === 2) {
-    return foundVariants.sort().join(" + ");
-  }
+  if (foundMutations.length === 2) return foundMutations.sort().join(" + ");
+  if (foundVariants.length === 2) return foundVariants.sort().join(" + ");
   return "Unknown";
 }
 
@@ -554,6 +549,20 @@ async function runFullBackfill(client) {
   console.log("IMPORTANT: set FULL_BACKFILL_MODE back to false after this one-time rebuild.");
 }
 
+function startHeartbeat() {
+  if (heartbeatInterval) clearInterval(heartbeatInterval);
+
+  heartbeatInterval = setInterval(() => {
+    const wsStatus = client.ws?.status;
+    const ping = client.ws?.ping;
+    const readyAt = client.readyAt ? client.readyAt.toISOString() : "not-ready";
+
+    console.log(
+      `[HEARTBEAT] wsStatus=${wsStatus} ping=${ping} readyAt=${readyAt} uptimeSec=${Math.floor(process.uptime())}`
+    );
+  }, 30000);
+}
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -562,14 +571,15 @@ const client = new Client({
   ]
 });
 
-client.once("ready", async () => {
-  console.log(`Bot online as ${client.user.tag}`);
+client.once(Events.ClientReady, async (readyClient) => {
+  console.log(`Bot online as ${readyClient.user.tag}`);
+  startHeartbeat();
   await loadRemoteData();
-  await runStartupCatchup(client);
-  await runFullBackfill(client);
+  await runStartupCatchup(readyClient);
+  await runFullBackfill(readyClient);
 });
 
-client.on("messageCreate", async (message) => {
+client.on(Events.MessageCreate, async (message) => {
   try {
     if (message.channel.id !== HATCH_CHANNEL_ID) return;
     if (message.author.id === client.user.id) return;
@@ -594,16 +604,47 @@ client.on("messageCreate", async (message) => {
   }
 });
 
-client.on("error", (err) => {
-  console.error("CLIENT ERROR:", err);
+client.on(Events.Debug, (info) => {
+  const lower = String(info).toLowerCase();
+  if (
+    lower.includes("heartbeat") ||
+    lower.includes("session") ||
+    lower.includes("resume") ||
+    lower.includes("disconnect") ||
+    lower.includes("reconnect")
+  ) {
+    console.log("[DEBUG]", info);
+  }
 });
 
-client.on("warn", (msg) => {
+client.on(Events.Warn, (msg) => {
   console.warn("CLIENT WARN:", msg);
 });
 
-client.on("shardError", (err) => {
-  console.error("SHARD ERROR:", err);
+client.on(Events.Error, (err) => {
+  console.error("CLIENT ERROR:", err);
+});
+
+client.on(Events.ShardDisconnect, (event, shardId) => {
+  console.error(
+    `[SHARD DISCONNECT] shard=${shardId} code=${event.code} reason=${event.reason || "none"}`
+  );
+});
+
+client.on(Events.ShardReconnecting, (shardId) => {
+  console.log(`[SHARD RECONNECTING] shard=${shardId}`);
+});
+
+client.on(Events.ShardResume, (replayedEvents, shardId) => {
+  console.log(`[SHARD RESUME] shard=${shardId} replayedEvents=${replayedEvents}`);
+});
+
+client.on(Events.ShardReady, (shardId) => {
+  console.log(`[SHARD READY] shard=${shardId}`);
+});
+
+client.on(Events.Invalidated, () => {
+  console.error("[SESSION INVALIDATED] Discord session invalidated");
 });
 
 process.on("unhandledRejection", (err) => {
